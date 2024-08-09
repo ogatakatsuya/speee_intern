@@ -1,0 +1,80 @@
+'on':
+  pull_request:
+    paths:
+      - rails/**
+      - .github/workflows/rails-test.yml
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rails
+    services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          TZ: 'Asia/Tokyo'
+        ports:
+          - 3306:3306
+    env:
+      RAILS_ENV: test
+      TZ: 'Asia/Tokyo'
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v3
+
+    # https://docs.github.com/en/enterprise-cloud@latest/actions/automating-builds-and-tests/building-and-testing-ruby
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+        working-directory: rails
+
+    - name: rubocop
+      run: bundle exec rubocop
+
+    - run: bundle exec rails db:create db:migrate
+    - name: rspec
+      run: bundle exec rspec
+
+    - name: comment to pr
+      if: github.event_name == 'pull_request'
+      run: |
+        PR_ID=$(echo $GITHUB_REF | sed -e 's/[^0-9]//g')
+        echo '|FILENAME|COVERAGE|' > coverage.md
+        echo '|------|------|' >> coverage.md
+        cat coverage/.resultset.json | jq -r '.RSpec.coverage | to_entries |
+          map({"file": .key, "notnull": .value.lines | map(select(. != null))}) |
+          map(select((.notnull | length) != 0)) |
+          map({
+            "file": .file,
+            "upperzero": (.notnull | map(select(. >= 1))),
+            "zero" : (.notnull | map(select(. == 0)))}) |
+          map({
+            "file": .file,
+            "upperzerolen": .upperzero | length,
+            "zerolen": .zero | length}) |
+          map({
+            "file": .file,
+            "ratio": ((((.upperzerolen * 10000 ) / (.zerolen + .upperzerolen)) | floor) / 100) }) |
+          sort_by(.ratio) |
+          map("|\(.file)|\(.ratio)%|") | join("\n")' >> coverage.md
+        sed -i s@/home/runner/work/${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}/${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}/@@g coverage.md
+
+        gh pr comment $PR_ID --body "コードカバレッジ:$(cat coverage/.last_run.json | jq .result.line)%
+          <details>
+            <summary>
+              ファイルごとのコードカバレッジ(低い順に10件表示)
+            </summary>
+
+          <!-- 先頭2行はマークダウンのカラム名と仕切り行なので、表示したい行数+2を指定する -->
+          $(head -n12 coverage.md)
+
+          </details>"
+        cat coverage.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
