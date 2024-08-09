@@ -82,7 +82,7 @@ jobs:
       id-token: write
       contents: read
     with:
-      env_name: internship
+      env_name: internship-c
       repository_name: dx-sandbox-infra
       branch: production
       ecr_repository_names: |
