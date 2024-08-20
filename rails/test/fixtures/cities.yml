@@ -1,9 +1,10 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+nagoyashi:
+  id: 1
+  name: "名古屋市"
+  yomikata: "なごやし"
 
-one:
-  name: MyString
-  yomikata: MyString
+osakashi:
+  id: 2
+  name: "大阪市"
+  yomikata: "おおさかし"
 
-two:
-  name: MyString
-  yomikata: MyString

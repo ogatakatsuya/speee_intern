@@ -4,7 +4,8 @@ require 'test_helper'
 
 class CityTest < ActiveSupport::TestCase
   def setup
-    @city = City.new(name: '名古屋市', yomikata: 'なごやし')
+    @prefecture = prefectures(:hokkaido)
+    @city = City.new(name: '名古屋市', yomikata: 'なごやし', prefecture_id: @prefecture.id)
   end
 
   test 'should be valid' do
@@ -31,8 +32,13 @@ class CityTest < ActiveSupport::TestCase
     assert_not @city.valid?
   end
 
-  test 'yomikata should be hiragane' do
+  test 'yomikata should be hiragana' do
     @city.yomikata = '漢字'
     assert_not @city.valid?
   end
+
+  test 'city should belong to a prefecture' do
+    assert_equal @prefecture, @city.prefecture
+  end
 end
+
