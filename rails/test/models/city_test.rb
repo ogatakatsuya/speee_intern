@@ -41,4 +41,3 @@ class CityTest < ActiveSupport::TestCase
     assert_equal @prefecture, @city.prefecture
   end
 end
-
