@@ -26,16 +26,4 @@ namespace :csv_import do
     end
     puts '完了！'
   end
-
-  # ここから下は無視
-  task company: :environment do
-    path = Rails.root.join 'db/csv/company.csv'.to_s
-    puts "path: #{path}"
-    CSV.foreach(path, headers: true) do |row|
-      puts row['name']
-      puts row['logo_url']
-      puts row['']
-    end
-    puts 'start to create prefecture data'
-  end
 end
