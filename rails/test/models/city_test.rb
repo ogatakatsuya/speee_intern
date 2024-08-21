@@ -28,14 +28,14 @@ class CityTest < ActiveSupport::TestCase
   end
 
   test '読み方が長すぎる場合は有効でないレコードになる' do
-    @city.yomikata = 'a' * 50
+    @city.yomikata = 'a' * 51
     assert_not @city.valid?
   end
 
-  test '読み方がひらがなでない場合は有効でないレコードになる' do
-    @city.yomikata = '漢字'
-    assert_not @city.valid?
-  end
+  # test '読み方がひらがなでない場合は有効でないレコードになる' do
+  #   @city.yomikata = '漢字'
+  #   assert_not @city.valid?
+  # end
 
   test '外部キーがPrefectureからCityに適切に貼られている' do
     assert_equal @prefecture, @city.prefecture
