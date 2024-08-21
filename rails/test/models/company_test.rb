@@ -4,7 +4,7 @@ require 'test_helper'
 
 class CompanyTest < ActiveSupport::TestCase
   def setup
-    @company = Company.new(name: 'Speee不動産1', logo_url: 'http://example.com/logo.png', ieul_company_id: 12345)
+    @company = Company.new(name: 'Speee不動産1', logo_url: 'http://example.com/logo.png', ieul_company_id: 12_345)
   end
 
   test '有効であるレコードとなる' do
