@@ -8,6 +8,11 @@ class Branch < ApplicationRecord
   validates :name, presence: true
   validates :post_code, presence: true
   validates :phone_number, presence: true
+  validates :fax_number, presence: true
+  validates :open_hours, presence: true
+  validates :closed_days, presence: true
+  validates :catch_copy, presence: true
+  validates :introduction, presence: true
   validates :street_address, presence: true
   validates :ieul_branch_id, presence: true
 end
