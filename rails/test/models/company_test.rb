@@ -22,7 +22,7 @@ class CompanyTest < ActiveSupport::TestCase
   end
 
   test 'IEULの会社IDが入力されていない場合は有効でないレコードになる' do
-    @company.ieul_company_id = '  '
+    @company.ieul_company_id = nil
     assert_not @company.valid?
   end
 end
