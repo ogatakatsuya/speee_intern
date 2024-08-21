@@ -2,6 +2,6 @@
 
 class AddPrefectureIdToCities < ActiveRecord::Migration[7.1]
   def change
-    add_column :cities, :prefecture_id, :integer
+    add_reference :cities, :prefecture, foreign_key: true
   end
 end

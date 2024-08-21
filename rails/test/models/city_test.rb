@@ -8,36 +8,36 @@ class CityTest < ActiveSupport::TestCase
     @city = City.new(name: '名古屋市', yomikata: 'なごやし', prefecture_id: @prefecture.id)
   end
 
-  test 'should be valid' do
+  test '有効であるレコードとなる' do
     assert @city.valid?
   end
 
-  test 'city name should not be present' do
+  test '名前が入力されていない場合は有効でないレコードになる' do
     @city.name = '  '
     assert_not @city.valid?
   end
 
-  test 'city name should not be too long' do
+  test '名前が長すぎる時は有効でないレコードになる' do
     @city.name = 'a' * 21
     assert_not @city.valid?
   end
 
-  test 'yomikata should be present' do
+  test '読み方が入力されていない場合は有効でないレコードになる' do
     @city.yomikata = '  '
     assert_not @city.valid?
   end
 
-  test 'yomikata should not be too long' do
+  test '読み方が長すぎる場合は有効でないレコードになる' do
     @city.yomikata = 'a' * 21
     assert_not @city.valid?
   end
 
-  test 'yomikata should be hiragana' do
+  test '読み方がひらがなでない場合は有効でないレコードになる' do
     @city.yomikata = '漢字'
     assert_not @city.valid?
   end
 
-  test 'city should belong to a prefecture' do
+  test '外部キーがPrefectureからCityに適切に貼られている' do
     assert_equal @prefecture, @city.prefecture
   end
 end

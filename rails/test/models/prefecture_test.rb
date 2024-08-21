@@ -7,16 +7,16 @@ class PrefectureTest < ActiveSupport::TestCase
     @prefecture = Prefecture.new(name: '愛知県')
   end
 
-  test 'should be valid' do
+  test '有効であるレコードとなる' do
     assert @prefecture.valid?
   end
 
-  test 'prefecture name should be present' do
+  test '名前が入力されていない場合は有効でないレコードとなる' do
     @prefecture.name = '   '
     assert_not @prefecture.valid?
   end
 
-  test 'prefecture name should not be too long' do
+  test '名前が長すぎる場合は有効でないレコードとなる' do
     @prefecture.name = 'a' * 5
     assert_not @prefecture.valid?
   end
