@@ -2,8 +2,9 @@
 
 class City < ApplicationRecord
   belongs_to :prefecture
-  has_many :brances, dependent: :destroy
+  has_many :branches, dependent: :destroy
   has_many :assessable_areas, dependent: :destroy
+  has_many :branches, through: :assessable_areas
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :yomikata, presence: true, length: { maximum: 50 }
