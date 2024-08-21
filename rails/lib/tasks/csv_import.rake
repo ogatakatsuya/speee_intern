@@ -33,9 +33,9 @@ namespace :csv_import do
     puts "読み込みpath: #{path}"
     CSV.foreach(path, headers: true) do |row|
       Company.create!(
-        name: row["name"], 
-        logo_url: row["logo_url"],
-        ieul_company_id: row["ieul_company_id"],
+        name: row['name'],
+        logo_url: row['logo_url'],
+        ieul_company_id: row['ieul_company_id']
       )
     end
     puts '完了！'
@@ -48,7 +48,7 @@ namespace :csv_import do
       # branch = Branch.create!(
       #   company_id: row["company_id"],
       #   city_id: row["city_id"],
-      #   name: row["企業名"], 
+      #   name: row["企業名"],
       #   post_code: row["郵便番号"],
       #   phone_number: row["電話番号"],
       #   fax_number: row["FAX番号"],
@@ -61,10 +61,9 @@ namespace :csv_import do
       # )
 
       # 査定可能エリア
-      row["査定依頼可能エリア"].split(",").each {
-        |city_id|
-        AssessableArea.create!(branch_id: row["id"], city_id: city_id)
-      }
+      row['査定依頼可能エリア'].split(',').each do |city_id|
+        AssessableArea.create!(branch_id: row['id'], city_id:)
+      end
     end
     puts '完了！'
   end
