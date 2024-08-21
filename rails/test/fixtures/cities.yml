@@ -1,12 +1,2 @@
-nagoyashi:
-  id: 1
-  name: "名古屋市"
-  yomikata: "なごやし"
-  prefecture: :hokkaido
 
-osakashi:
-  id: 2
-  name: "大阪市"
-  yomikata: "おおさかし"
-  prefecture: :hokkaido
 
