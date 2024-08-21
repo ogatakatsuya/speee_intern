@@ -1,4 +1,4 @@
-class CompanySatisfaction < ApplicationRecord
+class CompanySatisfaction < ActiveHash::Base
     self.data = [
         { id: 1, value: 1 },
         { id: 2, value: 2 },
@@ -6,4 +6,6 @@ class CompanySatisfaction < ApplicationRecord
         { id: 4, value: 4 },
         { id: 5, value: 5 }      
     ]
+    include ActiveHash::Associations
+    has_many :reviews
 end

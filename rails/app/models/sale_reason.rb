@@ -1,4 +1,4 @@
-class SaleReason < ApplicationRecord
+class SaleReason < ActiveHash::Base
     self.data = [
         { id: 1, reason: "住み替え"},
         { id: 2, reason: "相続"},
@@ -8,4 +8,6 @@ class SaleReason < ApplicationRecord
         { id: 6, reason: "金銭的な理由"},
         { id: 7, reason: "その他"}
     ]
+    include ActiveHash::Associations
+    has_many :reviews
 end
