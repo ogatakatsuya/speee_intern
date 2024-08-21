@@ -28,7 +28,7 @@ class CityTest < ActiveSupport::TestCase
   end
 
   test '読み方が長すぎる場合は有効でないレコードになる' do
-    @city.yomikata = 'a' * 21
+    @city.yomikata = 'a' * 50
     assert_not @city.valid?
   end
 
