@@ -6,6 +6,6 @@ class City < ApplicationRecord
   has_many :assessable_areas, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }
-  validates :yomikata, presence: true, length: { maximum: 20 },
-                       format: { with: /\A[ぁ-んー]+\z/ }
+  validates :yomikata, presence: true, length: { maximum: 50 }
+  #  format: { with: /\A[ぁ-んー]+\z/ }
 end
