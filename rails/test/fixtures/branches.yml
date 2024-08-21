@@ -1,1 +1,8 @@
-
+example_branch:
+  name: 'Example Branch'
+  post_code: '123-4567'
+  phone_number: '012-3456-789'
+  street_address: '123 Example St.'
+  ieul_branch_id: 102
+  company: :example_company
+  city: example_city
