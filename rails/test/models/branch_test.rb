@@ -85,4 +85,9 @@ class BranchTest < ActiveSupport::TestCase
     @branch.city = nil
     assert_not @branch.valid?
   end
+
+  test 'IEULの支店IDが整数以外の場合は有効でないレコードになる' do
+    @branch.ieul_branch_id = '千五百'
+    assert_not @branch.valid?
+  end
 end

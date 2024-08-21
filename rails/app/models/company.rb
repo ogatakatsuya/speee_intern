@@ -5,5 +5,5 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
   validates :logo_url, presence: true
-  validates :ieul_company_id, presence: true
+  validates :ieul_company_id, presence: true, numericality: {only_integer: true}
 end
