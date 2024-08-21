@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_21_022548) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_21_025152) do
+  create_table "branches", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "post_code"
+    t.string "phone_number"
+    t.string "fax_number"
+    t.string "open_hours"
+    t.string "closed_days"
+    t.string "catch_copy"
+    t.text "introduction"
+    t.string "street_address"
+    t.integer "ieul_branch_id"
+    t.bigint "company_id", null: false
+    t.bigint "city_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_branches_on_city_id"
+    t.index ["company_id"], name: "index_branches_on_company_id"
+  end
+
   create_table "cities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
     t.string "yomikata"
@@ -34,5 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_022548) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "branches", "cities"
+  add_foreign_key "branches", "companies"
   add_foreign_key "cities", "prefectures"
 end

@@ -1,0 +1,4 @@
+example_city:
+  name: "名古屋市"
+  yomikata: "なごやし"
+  prefecture: :hokkaido

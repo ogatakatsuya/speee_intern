@@ -1,11 +1,4 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  logo_url: MyString
-  ieul_company_id: 1
-
-two:
-  name: MyString
-  logo_url: MyString
-  ieul_company_id: 1
+example_company:
+  name: "example株式会社"
+  ieul_company_id: 12345
+  logo_url: 'http://example.com/logo.png'
