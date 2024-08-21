@@ -26,4 +26,18 @@ namespace :csv_import do
     end
     puts '完了！'
   end
+
+  # rake csv_import:company で実行
+  task company: :environment do
+    path = Rails.root.join 'db/csv/company.csv'.to_s
+    puts "読み込みpath: #{path}"
+    CSV.foreach(path, headers: true) do |row|
+      Company.create!(
+        name: row["name"], 
+        logo_url: row["logo_url"],
+        ieul_company_id: row["ieul_company_id"],
+      )
+    end
+    puts '完了！'
+  end
 end
