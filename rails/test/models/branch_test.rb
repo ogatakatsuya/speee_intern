@@ -7,15 +7,15 @@ class BranchTest < ActiveSupport::TestCase
     @company = companies(:example_company)
     @city = cities(:example_city)
     @branch = Branch.new(
-      name: 'Example Branch',
-      post_code: '123-4567',
+      name: '品川支店',
+      post_code: '329-1224',
       phone_number: '012-3456-789',
       fax_number: '012-3456-790',
-      open_hours: '9:00 - 18:00',
-      closed_days: 'Saturday, Sunday',
-      catch_copy: 'Best in Town',
-      introduction: 'We are the best branch for your needs.',
-      street_address: '123 Example St.',
+      open_hours: '平日9:00 - 18:00',
+      closed_days: '水曜日、祝日、GW、他',
+      catch_copy: '不動産の売却はSpeee1不動産にお任せください',
+      introduction: 'Speee1不動産港区支店にお任せください！東京都の不動産売却の実績多数です。',
+      street_address: '六本木3丁目',
       ieul_branch_id: 102,
       company: @company,
       city: @city
