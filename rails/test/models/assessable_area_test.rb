@@ -9,16 +9,16 @@ class AssessableAreaTest < ActiveSupport::TestCase
     @assessable_area = AssessableArea.new(branch: @branch, city: @city)
   end
 
-  test 'should be valid with valid branch and city' do
+  test '有効であるレコードとなる' do
     assert @assessable_area.valid?
   end
 
-  test 'should be invalid without a branch' do
+  test 'Branchへの関連付けがない場合は有効でないレコードになる' do
     @assessable_area.branch = nil
     assert_not @assessable_area.valid?
   end
 
-  test 'should be invalid without a city' do
+  test 'Cityへの関連付けがない場合は有効でないレコードになる' do
     @assessable_area.city = nil
     assert_not @assessable_area.valid?
   end
