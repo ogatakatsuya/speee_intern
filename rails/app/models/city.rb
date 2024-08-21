@@ -4,5 +4,5 @@ class City < ApplicationRecord
   belongs_to :prefecture
   validates :name, presence: true, length: { maximum: 20 }
   validates :yomikata, presence: true, length: { maximum: 50 }
-                      #  format: { with: /\A[ぁ-んー]+\z/ }
+  #  format: { with: /\A[ぁ-んー]+\z/ }
 end
