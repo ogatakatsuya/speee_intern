@@ -12,7 +12,10 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
     path = Rails.root.join 'db/csv/prefecture.csv'.to_s
     puts "読み込みpath: #{path}"
     CSV.foreach(path, headers: true) do |row|
-      Prefecture.create!(name: row['name'])
+      Prefecture.create!(
+        id: row['id'],
+        name: row['name']
+      )
     end
     puts '完了！'
   end
@@ -22,7 +25,12 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
     path = Rails.root.join 'db/csv/city.csv'.to_s
     puts "読み込みpath: #{path}"
     CSV.foreach(path, headers: true) do |row|
-      City.create!(prefecture_id: row['prefecture_id'], name: row['name'], yomikata: row['yomikata'])
+      City.create!(
+        id: row['id'],
+        prefecture_id: row['prefecture_id'],
+        name: row['name'],
+        yomikata: row['yomikata']
+      )
     end
     puts '完了！'
   end
@@ -33,6 +41,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
     puts "読み込みpath: #{path}"
     CSV.foreach(path, headers: true) do |row|
       Company.create!(
+        id: row['id'],
         name: row['name'],
         logo_url: row['logo_url'],
         ieul_company_id: row['ieul_company_id']
@@ -63,7 +72,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
 
       # 査定可能エリア
       row['査定依頼可能エリア'].split(',').each do |city_id|
-        AssessableArea.create!(branch_id: row['id'], city_id:)
+        AssessableArea.create!(branch_id: branch.id, city_id:)
       end
     end
     puts '完了！'
