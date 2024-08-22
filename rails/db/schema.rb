@@ -91,8 +91,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
     t.text "areas_for_improvement", null: false
     t.boolean "public", default: false, null: false
     t.integer "ieul_store_id", null: false
+    t.bigint "branch_id", null: false
+    t.bigint "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["branch_id"], name: "index_reviews_on_branch_id"
+    t.index ["city_id"], name: "index_reviews_on_city_id"
   end
 
   add_foreign_key "assessable_areas", "branches"
@@ -100,4 +104,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
   add_foreign_key "branches", "cities"
   add_foreign_key "branches", "companies"
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "reviews", "branches"
+  add_foreign_key "reviews", "cities"
 end

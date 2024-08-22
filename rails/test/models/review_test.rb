@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ReviewTest < ActiveSupport::TestCase
+class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
   def setup
     @gender = Gender.first
     @property_type = PropertyType.first
@@ -10,6 +10,8 @@ class ReviewTest < ActiveSupport::TestCase
     @contract_type = ContractType.first
     @sale_reason = SaleReason.first
     @company_satisfaction = CompanySatisfaction.first
+    @branch = branches(:example_branch)
+    @city = cities(:example_city)
 
     @review = Review.new(
       name: '田中 太郎',
@@ -23,12 +25,12 @@ class ReviewTest < ActiveSupport::TestCase
       listing_period: '2023-03-01',
       sale_period: '2023-04-01',
       transfer_period: '2023-05-01',
-      appraisal_price: 5000000,
-      sale_price: 4800000,
+      appraisal_price: 5_000_000,
+      sale_price: 4_800_000,
       discounted: false,
       months_to_discount: nil,
       discount_price: nil,
-      contract_price: 4800000,
+      contract_price: 4_800_000,
       contract_type_id: @contract_type.id,
       headline: 'とても対応が丁寧でした！',
       sale_reason_id: @sale_reason.id,
@@ -39,7 +41,9 @@ class ReviewTest < ActiveSupport::TestCase
       advice_for_future_sellers: '我慢強く待ってください。',
       areas_for_improvement: 'もっとコミュニケーションをとってほしい。',
       public: false,
-      ieul_store_id: 1
+      ieul_store_id: 1,
+      branch: @branch,
+      city: @city
     )
   end
 
@@ -174,6 +178,16 @@ class ReviewTest < ActiveSupport::TestCase
 
   test 'ieul_store_idがない場合は無効である' do
     @review.ieul_store_id = nil
+    assert_not @review.valid?
+  end
+
+  test 'Branchへの関連付けがない場合は無効である' do
+    @review.branch = nil
+    assert_not @review.valid?
+  end
+
+  test 'Cityへの関連付けがない場合は無効である' do
+    @review.city = nil
     assert_not @review.valid?
   end
 end

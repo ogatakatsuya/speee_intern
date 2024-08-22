@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReviews < ActiveRecord::Migration[7.1]
   def change
     create_table :reviews do |t|
@@ -14,7 +16,7 @@ class CreateReviews < ActiveRecord::Migration[7.1]
       t.date :transfer_period, null: false
       t.bigint :appraisal_price, null: false
       t.bigint :sale_price, null: false
-      t.boolean :discounted, null: false
+      t.boolean :discounted, null: false, default: false
       t.integer :months_to_discount
       t.bigint :discount_price
       t.bigint :contract_price, null: false
@@ -29,6 +31,9 @@ class CreateReviews < ActiveRecord::Migration[7.1]
       t.text :areas_for_improvement, null: false
       t.boolean :public, null: false, default: false
       t.integer :ieul_store_id, null: false
+
+      t.references :branch, null: false, foreign_key: true
+      t.references :city, null: false, foreign_key: true
 
       t.timestamps
     end
