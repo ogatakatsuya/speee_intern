@@ -28,8 +28,6 @@ class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
       appraisal_price: 5_000_000,
       sale_price: 4_800_000,
       discounted: false,
-      months_to_discount: nil,
-      discount_price: nil,
       contract_price: 4_800_000,
       contract_type_id: @contract_type.id,
       headline: 'とても対応が丁寧でした！',
@@ -189,5 +187,13 @@ class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
   test 'Cityへの関連付けがない場合は無効である' do
     @review.city = nil
     assert_not @review.valid?
+  end
+
+  test '外部キーがReviewからBranchに適切に貼られている' do
+    assert_equal @review.branch, @branch
+  end
+
+  test '外部キーがReviewからCityに適切に貼られている' do
+    assert_equal @review.city, @city
   end
 end
