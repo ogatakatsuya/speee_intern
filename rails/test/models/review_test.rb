@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
+class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength　あとで直す！！！
   def setup
     @gender = Gender.first
     @property_type = PropertyType.first
