@@ -28,7 +28,7 @@ class CreateReviews < ActiveRecord::Migration[7.1]
       t.integer :company_satisfaction_id, null: false
       t.text :company_satisfaction_reason, null: false
       t.text :advice_for_future_sellers, null: false
-      t.text :areas_for_improvement, null: false
+      t.text :areas_for_improvement
       t.boolean :public, null: false, default: false
       t.integer :ieul_store_id, null: false
 

@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
   end
 
   create_table "cities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "yomikata", null: false
+    t.string "name"
+    t.string "yomikata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "prefecture_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
   end
 
   create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
     t.date "transfer_period", null: false
     t.bigint "appraisal_price", null: false
     t.bigint "sale_price", null: false
-    t.boolean "discounted", null: false
+    t.boolean "discounted", default: false, null: false
     t.integer "months_to_discount"
     t.bigint "discount_price"
     t.bigint "contract_price", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
     t.integer "company_satisfaction_id", null: false
     t.text "company_satisfaction_reason", null: false
     t.text "advice_for_future_sellers", null: false
-    t.text "areas_for_improvement", null: false
+    t.text "areas_for_improvement"
     t.boolean "public", default: false, null: false
     t.integer "ieul_store_id", null: false
     t.bigint "branch_id", null: false

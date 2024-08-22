@@ -164,11 +164,6 @@ class ReviewTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
     assert_not @review.valid?
   end
 
-  test '会社が改善すべき点がない場合は無効である' do
-    @review.areas_for_improvement = nil
-    assert_not @review.valid?
-  end
-
   test 'publicがtrueまたはfalse以外の場合は無効である' do
     @review.public = nil
     assert_not @review.valid?
