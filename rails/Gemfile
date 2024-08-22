@@ -80,3 +80,5 @@ group :test do
 end
 
 gem 'active_hash'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
