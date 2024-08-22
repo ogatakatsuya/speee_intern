@@ -4,6 +4,7 @@ class Branch < ApplicationRecord
   belongs_to :company
   belongs_to :city
   has_many :assessable_areas, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :assessable_cities, through: :assessable_areas, source: :city
 
   validates :name, presence: true
