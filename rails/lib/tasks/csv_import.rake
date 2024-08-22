@@ -45,20 +45,21 @@ namespace :csv_import do
     path = Rails.root.join 'db/csv/branch.csv'.to_s
     puts "読み込みpath: #{path}"
     CSV.foreach(path, headers: true) do |row|
-      # branch = Branch.create!(
-      #   company_id: row["company_id"],
-      #   city_id: row["city_id"],
-      #   name: row["企業名"],
-      #   post_code: row["郵便番号"],
-      #   phone_number: row["電話番号"],
-      #   fax_number: row["FAX番号"],
-      #   open_hours: row["営業時間"],
-      #   closed_days: row["定休日"],
-      #   catch_copy: row["キャッチコピー"],
-      #   introduction: row["紹介文"],
-      #   street_address: row["以降住所"],
-      #   ieul_branch_id: row["ieul_店舗id"]
-      # )
+      branch = Branch.create!(
+        id: row['id'],
+        company_id: row["company_id"],
+        city_id: row["city_id"],
+        name: row["企業名"],
+        post_code: row["郵便番号"],
+        phone_number: row["電話番号"],
+        fax_number: row["FAX番号"],
+        open_hours: row["営業時間"],
+        closed_days: row["定休日"],
+        catch_copy: row["キャッチコピー"],
+        introduction: row["紹介文"],
+        street_address: row["以降住所"],
+        ieul_branch_id: row["ieul_店舗id"]
+      )
 
       # 査定可能エリア
       row['査定依頼可能エリア'].split(',').each do |city_id|
