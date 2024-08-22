@@ -14,4 +14,7 @@ rake csv_import:company
 ```sh
 rake csv_import:branch
 ```
+```sh
+rake csv_import:review
+```
 https://internship-c.sandbox.srv.speee.jp/

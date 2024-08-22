@@ -35,7 +35,6 @@ class Review < ApplicationRecord
   validates :company_satisfaction_id, presence: true
   validates :company_satisfaction_reason, presence: true
   validates :advice_for_future_sellers, presence: true
-  validates :areas_for_improvement, presence: true
   validates :public, inclusion: { in: [true, false] }
   validates :ieul_store_id, presence: true
 end
