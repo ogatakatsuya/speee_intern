@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_21_081437) do
     t.integer "age", null: false
     t.string "address", null: false
     t.integer "property_type_id", null: false
-    t.integer "sale_count_id", null: false
+    t.integer "sales_count_id", null: false
     t.date "sale_consideration_period", null: false
     t.date "appraisal_request_period", null: false
     t.date "listing_period", null: false
