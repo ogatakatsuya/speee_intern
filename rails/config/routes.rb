@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :branches, only: %i[index show]
+  resources :reviews, only: %i[show]
 end
