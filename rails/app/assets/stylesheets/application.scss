@@ -1,0 +1,64 @@
+@import "bootstrap";
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination > li > a,
+  .pagination > li > span {
+    border: 1px solid transparent;
+    color: #333;
+    background-color: #fff;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination > li > a:hover,
+  .pagination > li > span:hover {
+    background-color: #f8f9fa;
+    border-color: #000;
+  }
+  
+  .pagination > .active > a,
+  .pagination > .active > span,
+  .pagination > .active > a:hover,
+  .pagination > .active > span:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+    cursor: default;
+  }
+  
+  .pagination > .disabled > a,
+  .pagination > .disabled > span {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  
+  .pagination > li:first-child > a,
+  .pagination > li:first-child > span,
+  .pagination > li:last-child > a,
+  .pagination > li:last-child > span {
+    border-radius: 50%;
+  }
+  
+  /* Styles for previous and next buttons */
+  .pagination > li:first-child > a,
+  .pagination > li:first-child > span,
+  .pagination > li:last-child > a,
+  .pagination > li:last-child > span {
+    width: auto;
+    padding: 8px 12px;
+    border-radius: 20px;
+  }

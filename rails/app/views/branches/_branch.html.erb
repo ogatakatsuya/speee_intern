@@ -1,0 +1,20 @@
+<div class="col-md-6 mb-4">
+    <div class="card" style="border: 1px solid #ddd;">
+        <div class="col-md-4 text-center align-self-center">
+            <h5 class="card-title"><%= branch.name %></h5>
+            <% if branch.reviews.present? %>
+                <p class="card-text" style="font-size: 24px;">★<%= branch.reviews.average(:company_satisfaction_id).round(1) %></p>
+            <% end %>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <p class="card-text"><strong>営業時間：</strong><%= branch.open_hours  %></p>
+                <p class="card-text"><strong>定休日：</strong><%= branch.closed_days %></p>
+                <p class="card-text"><strong>住所：</strong><%= branch.full_address %></p>
+                <% if branch.reviews.present? %>
+                    <p class="card-text"><strong>会社の決め手：</strong><%= branch.reviews.first.chosen_company_reason %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
