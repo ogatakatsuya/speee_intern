@@ -7,5 +7,5 @@ class City < ApplicationRecord
   has_many :branches, through: :assessable_areas
 
   validates :name, presence: true
-  validates :yomikata, presence: true, format: { with: /\A[ァ-ヴー]+\z/ }
+  validates :yomikata, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
 end
