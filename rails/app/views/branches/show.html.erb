@@ -1,56 +1,49 @@
-<h1>
-  <%= @branch.name %>
-</h1>
+<div class="container my-4">
+  <h1 class="mb-4">
+    <%= @branch.name %>
+  </h1>
 
-<img src="<%= @branch.company.logo_url %>" alt="<%= @branch.company.name%>のロゴ画像" />
+  <div class="row">
+    <div class="col-md-2">
+      <img src="<%= @branch.company.logo_url %>" class="img-fluid" alt="<%= @branch.company.name %>のロゴ画像" />
+    </div>
+    <div class="col-md-10">
+        <div class="mb-4">
+          <strong>キャッチコピー:</strong> <span class="d-block"><%= @branch.catch_copy %></span>
+        </div>
 
-<div>
-  <strong>キャッチコピー:</strong> <%= @branch.catch_copy %>
-</div>
+        <div class="mb-4">
+          <strong>紹介文:</strong> <span class="d-block"><%= @branch.introduction %></span>
+        </div>
+    </div>
+  </div>
 
-<div>
-  <strong>紹介文:</strong> <%= @branch.introduction %>
-</div>
-
-<div class="branch-info">
-  <strong><%= @branch.name %>について</strong>
-  <div>
-    企業名 : <%= @branch.company.name %>
-  </div>
-  <div>
-    郵便番号 : <%= @branch.post_code %>
-  </div>
-  <div>
-    住所 : <%= @branch.full_address %>
-  </div>
-  <div>
-    電話番号 : <%= @branch.phone_number %>
-  </div>
-  <div>
-    FAX : <%= @branch.fax_number %>
-  </div>
-  <div>
-    営業時間 : <%= @branch.open_hours %>
-  </div>
-  <div>
-    定休日 : <%= @branch.closed_days %>
-  </div>
-</div>
-
-<div>
-  <strong><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 星3.5）</strong>
-  <hr>
-  <% @branch.reviews.each do |review| %>
-    <div>
-      <div><%= review.headline %> : 星<%= review.company_satisfaction_id %></div>
-      <div><%= review.company_satisfaction_reason %></div>
-      <div>
-        成約価格 : <%= review.contract_price %>（<%= review.city.name %>・<%= review.sale_period %>に売却）
+  <div class="branch-info mb-4">
+    <h2 class="h4 mb-4"><%= @branch.name %>について</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div>企業名 : <%= @branch.company.name %></div>
+        <div>郵便番号 : <%= @branch.post_code %></div>
+        <div>住所 : <%= @branch.full_address %></div>
+      </div>
+      <div class="col-md-6">
+        <div>電話番号 : <%= @branch.phone_number %></div>
+        <div>FAX : <%= @branch.fax_number %></div>
+        <div>営業時間 : <%= @branch.open_hours %></div>
+        <div>定休日 : <%= @branch.closed_days %></div>
       </div>
     </div>
+  </div>
+
+  <div class="reviews mb-4">
+    <h2 class="h4"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 ★3.5）</h2>
     <hr>
-  <% end %>
+    <% @branch.reviews.each do |review| %>
+      <%= render partial: "review", locals: { review: review } %>
+    <% end %>
+  </div>
+
+  <div class="text-center"> 
+    <button class="btn btn-primary">査定依頼を出す</button>
+  </div>
 </div>
-
-<button>査定依頼を出す</button>
-
