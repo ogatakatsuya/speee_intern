@@ -2,7 +2,7 @@
   <%= @branch.name %>
 </h1>
 
-<img src="<%= @company.logo_url %>" alt="<%= @company.name%>のロゴ画像" />
+<img src="<%= @branch.company.logo_url %>" alt="<%= @branch.company.name%>のロゴ画像" />
 
 <div>
   <strong>キャッチコピー:</strong> <%= @branch.catch_copy %>
@@ -15,13 +15,13 @@
 <div class="branch-info">
   <strong><%= @branch.name %>について</strong>
   <div>
-    企業名 : <%= @company.name %>
+    企業名 : <%= @branch.company.name %>
   </div>
   <div>
     郵便番号 : <%= @branch.post_code %>
   </div>
   <div>
-    住所 : <%= @branch_prefecture.name %><%= @branch_city.name %><%= @branch.street_address %>
+    住所 : <%= @branch.full_address %>
   </div>
   <div>
     電話番号 : <%= @branch.phone_number %>
@@ -38,14 +38,14 @@
 </div>
 
 <div>
-  <strong><%= @company.name %>で売却したひとの不動産会社についての口コミ（平均評価 星3.5）</strong>
-  
-  <% @reviews.each do |review| %>
+  <strong><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 星3.5）</strong>
+  <hr>
+  <% @branch.reviews.each do |review| %>
     <div>
       <div><%= review.headline %> : 星<%= review.company_satisfaction_id %></div>
       <div><%= review.company_satisfaction_reason %></div>
       <div>
-        成約価格 : <%= review.contract_price %>（<%= City.find(review.city_id).name %>・<%= review.sale_period %>に売却）
+        成約価格 : <%= review.contract_price %>（<%= review.city.name %>・<%= review.sale_period %>に売却）
       </div>
     </div>
     <hr>
