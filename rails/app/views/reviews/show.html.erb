@@ -1,93 +1,110 @@
-<h1><%= @review.headline %></h1>
-<h3>基本情報</h3>
-<div>
-    <div><strong>売却した不動産会社名 : </strong> <%= @review.branch.name %></div>
-    <div><strong>住所 : </strong> <%= @review.branch.full_address %></div>
-    <div><strong>売却の理由 : </strong> <%= SaleReason.find(@review.sale_reason_id).reason %></div>
-    <div><strong>売却経験 : </strong> <%= SalesCount.find(@review.sales_count_id).count %></div>
-    <div><strong>性別 : </strong> <%= Gender.find(@review.gender_id).gender %></div>
-    <div><strong>年齢 : </strong> <%= @review.age %></div>
-    <div><strong>物件種別 : </strong> <%= PropertyType.find(@review.property_type_id).type %></div>
-    <div><strong>契約の形態:</strong> <%= ContractType.find(@review.contract_type_id).type %></div>
-</div>
-<h3>売却時に不安だったこと</h3>
-<div>
-    <%= @review.concerns_at_sale %>
-</div>
-<h3>この会社に決めた決め手</h3>
-<div>
-    <%= @review.chosen_company_reason %>
-</div>
-<h3>不動産会社の満足度</h3>
-<div>
-  <div><strong>不動産会社の満足度 : </strong> <%= @review.company_satisfaction_id %></div>
-  <div><strong>不動産会社の満足度の理由 : </strong> <%= @review.company_satisfaction_reason %></div>
-</div>
-<h3>今後売却する人へのアドバイス</h3>
-<div>
-    <%= @review.advice_for_future_sellers %>
-</div>
+<div class="container">
+    <h3 class="text-center mt-4"><%= @review.headline %></h3>
 
-<% if @review.areas_for_improvement.present? %>
-    <h3>不動産会社に改善してほしい点</h3> 
-    <div>
-        <%= @review.areas_for_improvement %>
+    <div class="container">
+    <h5 class="fw-bold">基本情報</h5>
+        <div>売却した不動産会社名 : <%= @review.branch.name %></div>
+        <div>住所 :  <%= @review.branch.city_adress %></div>
+        <div>売却の理由 : <%= SaleReason.find(@review.sale_reason_id).reason %></div>
+        <div>売却経験 : <%= SalesCount.find(@review.sales_count_id).count %></div>
+        <div>性別 : <%= Gender.find(@review.gender_id).gender %></div>
+        <div>年齢 : <%= @review.age %></div>
+        <div>物件種別 : <%= PropertyType.find(@review.property_type_id).type %></div>
+        <div>契約の形態 : <%= ContractType.find(@review.contract_type_id).type %></div>
     </div>
-<% end %>
 
-<div>
-    <h3>売却時期と価格について</h3>
-    <table class="table">
-        <tbody>
-            <tr>
-                <td>売却検討/価格</td>
-                <td><%= @review.sale_consideration_period %></td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>査定依頼時期/価格</td>
-                <td><%= @review.appraisal_request_period %></td>
-                <td><%= @review.appraisal_price %></td>
-            </tr>
-            <tr>
-                <td>売出時期/価格</td>
-                <td><%= @review.listing_period %></td>
-                <td><%= @review.sale_price %></td>
-            </tr>
-            <tr>
-                <td>売却時期/価格</td>
-                <td><%= @review.sale_period %></td>
-                <td><%= @review.contract_price %></td>
-            </tr>
-            <tr>
-                <td>引き渡し時期</td>
-                <td><%= @review.transfer_period %></td>
-                <td>-</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div>
-    <h3>割引時期と割引価格について</h3>
-    <div>
-        <strong>割引までの月数 : </strong><%= @review.months_to_discount %>
+    <div class="container mt-5">
+        <h5 class="fw-bold">売却時に不安だったこと</h5>
+        <%= @review.concerns_at_sale %>
     </div>
-    <div>
-        <strong>割引価格 : </strong><%= @review.contract_price %>
-    </div>
-</div>
 
-<div>
-    <h3><%= @review.branch.name %>について</h3>
-    <div>
-        <div><strong>郵便番号:</strong> <%= @review.branch.post_code %></div>
-        <div><strong>電話番号:</strong> <%= @review.branch.phone_number %></div>
-        <div><strong>FAX番号:</strong> <%= @review.branch.fax_number %></div>
-        <div><strong>営業時間:</strong> <%= @review.branch.open_hours %></div>
-        <div><strong>定休日:</strong> <%= @review.branch.closed_days %></div>
-        <div><strong>キャッチコピー:</strong> <%= @review.branch.catch_copy %></div>
-        <div><strong>紹介文:</strong> <%= @review.branch.introduction %></div>
-        <div><strong>住所:</strong> <%= @review.branch.full_address %></div>
+    <div class="container mt-5">
+        <h5 class="fw-bold">この会社に決めた決め手</h5>
+        <%= @review.chosen_company_reason %>
+    </div>
+
+    <div class="container mt-5">
+        <h5 class="fw-bold">不動産会社の満足度</h5>
+        <div>
+            <strong>不動産会社の満足度 : </strong>
+            <span style="font-size: 20px;">★<%= @review.company_satisfaction_id %></span>
+        </div>
+        <div>
+            <strong>不動産会社の満足度の理由 : </strong> <%= @review.company_satisfaction_reason %>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h5 class="fw-bold">今後売却する人へのアドバイス</h5>
+        <%= @review.advice_for_future_sellers %>
+    </div>
+
+    <% if @review.areas_for_improvement.present? %>
+        <div class="container mt-5">
+            <h5 class="fw-bold">不動産会社に改善してほしい点</h5> 
+            <%= @review.areas_for_improvement %>
+        </div>
+    <% end %>
+
+    <div class="container mt-5">
+        <h5 class="fw-bold">売却時期と価格について</h5>
+        <div class="border border-gray p-2">
+            <table class="table mt-3">
+                <tbody>
+                    <tr>
+                        <td>売却検討/価格</td>
+                        <td><%= @review.sale_consideration_period %></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>査定依頼時期/価格</td>
+                        <td><%= @review.appraisal_request_period %></td>
+                        <td><%= @review.appraisal_price %></td>
+                    </tr>
+                    <tr>
+                        <td>売出時期/価格</td>
+                        <td><%= @review.listing_period %></td>
+                        <td><%= @review.sale_price %></td>
+                    </tr>
+                    <tr>
+                        <td>売却時期/価格</td>
+                        <td><%= @review.sale_period %></td>
+                        <td><%= @review.contract_price %></td>
+                    </tr>
+                    <tr>
+                        <td>引き渡し時期</td>
+                        <td><%= @review.transfer_period %></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h5 class="fw-bold">割引時期と割引価格について</h5>
+        <div>
+            <strong>割引までの月数 : </strong><%= @review.months_to_discount %>
+        </div>
+        <div>
+            <strong>割引価格 : </strong><%= @review.contract_price %>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <h5 class="fw-bold"><%= @review.branch.name %>について</h5>
+        <div>
+            <div>郵便番号: <%= @review.branch.post_code %></div>
+            <div>電話番号: <%= @review.branch.phone_number %></div>
+            <div>FAX番号: <%= @review.branch.fax_number %></div>
+            <div>営業時間: <%= @review.branch.open_hours %></div>
+            <div>定休日: <%= @review.branch.closed_days %></div>
+            <div>キャッチコピー: <%= @review.branch.catch_copy %></div>
+            <div>紹介文: <%= @review.branch.introduction %></div>
+            <div>住所: <%= @review.branch.full_address %></div>
+        </div>
+    </div>
+    <div class="text-center mb-4">
+        <button class="btn btn-primary">査定依頼をする</button>
     </div>
 </div>
