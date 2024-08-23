@@ -6,7 +6,6 @@ class City < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :branches, through: :assessable_areas
 
-  validates :name, presence: true, length: { maximum: 20 }
-  validates :yomikata, presence: true, length: { maximum: 50 }
-  #  format: { with: /\A[ぁ-んー]+\z/ }
+  validates :name, presence: true
+  validates :yomikata, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
 end
