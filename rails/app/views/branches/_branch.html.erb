@@ -1,11 +1,10 @@
-
-<div class="col-md-6 mb-4 h-100">
-    <div class="card" style="max-width: 600px; border: 1px solid #ddd;">
+<div class="col-md-6 mb-4">
+    <div class="card" style="border: 1px solid #ddd;">
         <div class="col-md-4 text-center align-self-center">
-        <h5 class="card-title"><%= branch.name %></h5>
-        <% if !branch.reviews.empty? %>
-            <p class="card-text" style="font-size: 24px;">★<%= branch.reviews.average(:company_satisfaction_id).round(1) %></p>
-        <% end %>
+            <h5 class="card-title"><%= branch.name %></h5>
+            <% if !branch.reviews.empty? %>
+                <p class="card-text" style="font-size: 24px;">★<%= branch.reviews.average(:company_satisfaction_id).round(1) %></p>
+            <% end %>
         </div>
         <div class="col-md-8">
             <div class="card-body">
