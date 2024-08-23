@@ -6,6 +6,6 @@ class BranchesController < ApplicationController
   end
 
   def show
-    @branch = Branch.find(params[:id])
+    @branch = Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
   end
 end
