@@ -2,7 +2,7 @@
 
 class BranchesController < ApplicationController
   def index
-    @branches = Branch.paginate(page: params[:page])
+    @branches = Branch.preload(:reviews).paginate(page: params[:page], per_page: 10)
   end
 
   def show
