@@ -2,6 +2,6 @@
 
 class ReviewsController < ApplicationController
   def show
-    @review = Review.find(params[:id])
+    @review = Review.preload(branch: { city: :prefecture }).find(params[:id])
   end
 end
