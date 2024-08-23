@@ -17,4 +17,8 @@ class Branch < ApplicationRecord
   validates :introduction, presence: true
   validates :street_address, presence: true
   validates :ieul_branch_id, presence: true, numericality: { only_integer: true }
+
+  def full_address
+    city.prefecture.name + city.name + street_address
+  end
 end

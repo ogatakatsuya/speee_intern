@@ -1,8 +1,8 @@
 <h1><%= @review.headline %></h1>
 <h3>基本情報</h3>
 <div>
-    <div><strong>売却した不動産会社名 : </strong> <%= Branch.find(@review.branch_id).name %></div>
-    <div><strong>住所 : </strong> <%= @review_prefecture.name %><%= @review_city.name %></div>
+    <div><strong>売却した不動産会社名 : </strong> <%= @review.branch.name %></div>
+    <div><strong>住所 : </strong> <%= @review.branch.full_address %></div>
     <div><strong>売却の理由 : </strong> <%= SaleReason.find(@review.sale_reason_id).reason %></div>
     <div><strong>売却経験 : </strong> <%= SalesCount.find(@review.sales_count_id).count %></div>
     <div><strong>性別 : </strong> <%= Gender.find(@review.gender_id).gender %></div>
@@ -28,7 +28,7 @@
     <%= @review.advice_for_future_sellers %>
 </div>
 
-<% if @review.advice_for_future_sellers.empty? %>
+<% if @review.areas_for_improvement.present? %>
     <h3>不動産会社に改善してほしい点</h3> 
     <div>
         <%= @review.areas_for_improvement %>
@@ -79,15 +79,15 @@
 </div>
 
 <div>
-    <h3><%= @branch.name %>について</h3>
+    <h3><%= @review.branch.name %>について</h3>
     <div>
-        <div><strong>郵便番号:</strong> <%= @branch.post_code %></div>
-        <div><strong>電話番号:</strong> <%= @branch.phone_number %></div>
-        <div><strong>FAX番号:</strong> <%= @branch.fax_number %></div>
-        <div><strong>営業時間:</strong> <%= @branch.open_hours %></div>
-        <div><strong>定休日:</strong> <%= @branch.closed_days %></div>
-        <div><strong>キャッチコピー:</strong> <%= @branch.catch_copy %></div>
-        <div><strong>紹介文:</strong> <%= @branch.introduction %></div>
-        <div><strong>住所:</strong> <%= @branch_prefecture.name %><%= @branch_city.name %><%= @branch.street_address %></div>
+        <div><strong>郵便番号:</strong> <%= @review.branch.post_code %></div>
+        <div><strong>電話番号:</strong> <%= @review.branch.phone_number %></div>
+        <div><strong>FAX番号:</strong> <%= @review.branch.fax_number %></div>
+        <div><strong>営業時間:</strong> <%= @review.branch.open_hours %></div>
+        <div><strong>定休日:</strong> <%= @review.branch.closed_days %></div>
+        <div><strong>キャッチコピー:</strong> <%= @review.branch.catch_copy %></div>
+        <div><strong>紹介文:</strong> <%= @review.branch.introduction %></div>
+        <div><strong>住所:</strong> <%= @review.branch.full_address %></div>
     </div>
 </div>
