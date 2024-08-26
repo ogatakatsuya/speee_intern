@@ -24,6 +24,13 @@ class AssessmentRequestsController < ApplicationController
     end
   end
 
+  def cities
+    @cities = City.where(prefecture_id: params[:id])
+    respond_to do |format|
+      format.json { render json: @cities }
+    end
+  end
+
   private
 
   def assessment_request_params
@@ -36,7 +43,7 @@ class AssessmentRequestsController < ApplicationController
         :user_last_name_kana,
         :user_tel,
         :user_email,
-        :property_city,
+        :property_city_id,
         :property_address,
         :property_type,
         :property_exclusive_area,

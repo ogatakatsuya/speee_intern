@@ -142,13 +142,19 @@
     <%= form.label :property_prefecture, "物件の都道府県" %>
     <%=
       form.collection_select(
-        :property_prefecture,
+        :property_prefectur_id,
         @prefectures,
         :id,
         :name,
         {
           prompt: "都道府県を選択してください",
           required: true
+        },
+        {
+          data: {
+            assessment_request_form_target: "propertyPrefectureId",
+            action: "change->assessment-request-form#updateCities"
+          }
         }
       )
     %>
@@ -158,13 +164,18 @@
     <%= form.label :property_city, "物件の市区町村" %>
     <%=
       form.collection_select(
-        :property_city,
+        :property_city_id,
         @cities,
         :id,
         :name,
         {
           prompt: "市区町村を選択してください",
           required: true
+        },
+        {
+          data: {
+            assessment_request_form_target: "propertyCityId",
+          }
         }
       )
     %>

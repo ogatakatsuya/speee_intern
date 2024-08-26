@@ -21,7 +21,7 @@ class AssessmentRequestForm
   attribute :url_param, :string
 
   # 物件の市区ID
-  attribute :property_city, :integer
+  attribute :property_city_id, :integer
   # 査定依頼する物件の住所
   attribute :property_address, :string
   # 物件種別（1: '分譲マンション', 2: '一戸建て', 3: '土地'）

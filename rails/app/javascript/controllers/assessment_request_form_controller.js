@@ -12,7 +12,8 @@ export default class AssessmentRequestFormController extends Controller {
     "userFirstNameKana",
     "userTel",
     "userEmail",
-    // "propertyCity",
+    "propertyPrefectureId",
+    "propertyCityId",
     "propertyAddress",
     // "propertyType",
     "propertyExclusiveArea",
@@ -286,5 +287,26 @@ export default class AssessmentRequestFormController extends Controller {
       }
     }
     return true
+  }
+
+  updateCities(){
+    const prefectureId = this.propertyPrefectureIdTarget.value
+    if(prefectureId){
+      const propertyCityIdTarget = this.propertyCityIdTarget
+
+      fetch(`/assessment_requests/${prefectureId}/cities`)
+        .then(response => response.json())
+        .then(data => {
+          // 選択肢を初期化
+          propertyCityIdTarget.innerHTML = "";
+          // 取得した市区町村を選択肢に追加
+          data.forEach(city => {
+            const option = document.createElement("option");
+            option.value = city.id;
+            option.textContent = city.name;
+            propertyCityIdTarget.appendChild(option);
+          });
+        });
+    }
   }
 }
