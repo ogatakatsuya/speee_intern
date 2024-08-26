@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :branches, only: %i[index show]
   resources :reviews, only: %i[show]
+  resources :assessment_requests, only: %i[new create] do
+    member do
+      get :cities
+    end
+  end
 end

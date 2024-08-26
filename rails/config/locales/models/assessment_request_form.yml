@@ -1,0 +1,21 @@
+ja:
+  activemodel:
+    attributes:
+      assessment_request_form:
+        :user_first_name: "名字"
+        :user_last_name: "名前"
+        :user_first_name_kana: "名字（カナ）"
+        :user_last_name_kana: "名前（カナ）"
+        :user_tel: "電話番号"
+        :user_email: "メールアドレス"
+        :property_city: "市区町村"
+        :property_address: "住所"
+        :property_type: "物件種別"
+        :property_exclusive_area: "専有面積"
+        :property_land_area: "土地面積"
+        :property_building_area: "建物面積"
+        :property_building_area_unit: "建物面積単位"
+        :property_floor_area: "床面積"
+        :property_room_plan: "間取り"
+        :property_constructed_year: "築年数"
+    
