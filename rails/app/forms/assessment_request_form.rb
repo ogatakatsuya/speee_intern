@@ -62,5 +62,5 @@ class AssessmentRequestForm
   validates :property_building_area_unit, presence: true, numericality: { in: 1..2 }
   validates :property_floor_area, presence: true
   validates :property_room_plan, presence: true, numericality: { in: 1..13 }
-  validates :property_constructed_year, presence: true, numericality: { in: 1925..2016 }
+  validates :property_constructed_year, presence: true, numericality: { greater_than_or_equal_to: 1925 }
 end
