@@ -48,10 +48,10 @@ class AssessmentRequestForm
   validates :user_last_name, presence: true, length: { maximum: 15 }
   validates :user_first_name_kana, presence: true, length: { maximum: 30 }
   validates :user_last_name_kana, presence: true, length: { maximum: 30 }
-  validates :user_tel, presence: true, format: { with: this.TEL_REGEX }
+  validates :user_tel, presence: true, format: { with: TEL_REGEX }
   # \A: 行頭 \z: 行末
   # /i: 大文字小文字を区別しない
-  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: this.EMAIL_REGEX }
+  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: EMAIL_REGEX }
 
   validates :property_city, presence: true
   validates :property_address, presence: true
