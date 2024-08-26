@@ -36,7 +36,7 @@ ja:
               too_long: "は%{count}文字以内で入力してください"
             user_tel:
               blank: "を入力してください"
-              invalid: "は0始まりかつ10〜11桁の数字でなければなりません"
+              invalid: "は0始まりかつ10〜11桁の数字で入力してください"
             user_email:
               blank: "を入力してください"
               too_long: "は%{count}文字以内で入力してください"

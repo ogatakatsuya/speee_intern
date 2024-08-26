@@ -46,8 +46,9 @@ class AssessmentRequestForm
   validates :user_first_name_kana, presence: true, length: { maximum: 30 }
   validates :user_last_name_kana, presence: true, length: { maximum: 30 }
   validates :user_tel, presence: true, format: { with: /\A0\d{9,10}\z/ }
+  # \A: 行頭 \z: 行末
   # /i: 大文字小文字を区別しない
-  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i }
 
   validates :property_city, presence: true
   validates :property_address, presence: true

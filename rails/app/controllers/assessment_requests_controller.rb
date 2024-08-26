@@ -49,11 +49,9 @@ class AssessmentRequestsController < ApplicationController
 
   def get_prefectures
     @prefectures = Prefecture.all
-    @prefectures = @prefectures.map { |prefecture| [prefecture.name, prefecture.id] }
   end
 
   def get_cities
     @cities = City.all
-    @cities = @cities.map { |city| [city.name, city.id] }
   end
 end
