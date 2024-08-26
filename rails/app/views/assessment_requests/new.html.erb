@@ -1,0 +1,105 @@
+<h2>査定依頼フォーム</h2>
+
+<!-- local: trueを書くと同期通信になる -->
+<!-- リクエストを送ると必ずレスポンスを受け取る -->
+<%= form_with model: @assessment_request_form, url: assessment_requests_path, local: true do |form| %>
+  <!-- チュートリアルの第12章を参照 -->
+  <%= hidden_field_tag :branch_id, @assessment_request_form.branch_id %>
+
+  <div>
+    <%= form.label :user_name, "お名前" %>
+    <%= form.text_field :user_last_name %>
+    <%= form.text_field :user_first_name %>
+  </div>
+
+  <div>
+    <%= form.label :user_name_kana, "フリガナ" %>
+    <%= form.text_field :user_last_name_kana %>
+    <%= form.text_field :user_first_name_kana %>
+  </div>
+
+  <div>
+    <%= form.label :user_tel, "電話番号" %>
+    <%= form.telephone_field :user_tel %>
+  </div>
+
+  <div>
+    <%= form.label :user_email, "メールアドレス" %>
+    <%= form.email_field :user_email %>
+  </div>
+
+  <div>
+    <%= form.label :property_prefecture, "物件の都道府県" %>
+    <%= form.select :property_prefecture, options_for_select(@prefectures) %>
+  </div>
+
+  <div>
+    <%= form.label :property_city, "物件の市区町村" %>
+    <%= form.select :property_city, options_for_select(@cities) %>
+  </div>
+
+  <div>
+    <%= form.label :property_address, "物件の住所" %>
+    <%= form.text_field :property_address %>
+  </div>
+
+  <div>
+    <%= form.label :property_type, "物件種別" %>
+    <%= form.select :property_type, options_for_select([[ '分譲マンション', 1 ], [ '一戸建て', 2 ], [ '土地', 3 ]]) %>
+  </div>
+
+  <div>
+    <%= form.label :property_exclusive_area, "専有面積" %>
+    <%= form.number_field :property_exclusive_area, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :property_land_area, "土地面積" %>
+    <%= form.number_field :property_land_area, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :property_building_area, "建物面積" %>
+    <%= form.number_field :property_building_area, step: 0.01 %>
+    <%= form.select :property_building_area_unit, options_for_select([[ '平方メートル', 1 ], [ '坪', 2 ]]) %>
+  </div>
+
+  <div>
+    <%= form.label :property_floor_area, "延床面積" %>
+    <%= form.number_field :property_floor_area, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :property_room_plan, "間取り" %>
+    <%=
+      form.select :property_room_plan,
+      options_for_select(
+        [
+          ['1R(ワンルーム)', 1],
+          ['1K / 1DK', 2],
+          ['1LK / 1LDK', 3],
+          ['2K / 2DK', 4],
+          ['2LK / 2LDK', 5],
+          ['3K / 3DK', 6],
+          ['3LK / 3LDK', 7],
+          ['4K / 4DK', 8],
+          ['4LK / 4LDK', 9],
+          ['5K / 5DK', 10],
+          ['5LK / 5LDK', 11],
+          ['6K / 6DK', 12],
+          ['6LK / 6LDK以上', 13]
+        ]
+      ) %>
+  </div>
+
+  <div>
+    <%= form.label :property_constructed_year, "築年数" %>
+    <%= form.number_field :property_constructed_year, in: 1925..2016 %>
+  </div>
+
+  <div>
+    <%= form.submit "査定依頼をする" %>
+  </div>
+
+  <%= debug(params) if Rails.env.development? %>
+<% end %>
