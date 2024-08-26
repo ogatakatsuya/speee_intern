@@ -2,6 +2,9 @@ class AssessmentRequestForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
+  TEL_REGEX = /\A0\d{9,10}\z/
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
+
   # 名字
   attribute :user_last_name, :string
   # 名前
@@ -45,10 +48,10 @@ class AssessmentRequestForm
   validates :user_last_name, presence: true, length: { maximum: 15 }
   validates :user_first_name_kana, presence: true, length: { maximum: 30 }
   validates :user_last_name_kana, presence: true, length: { maximum: 30 }
-  validates :user_tel, presence: true, format: { with: /\A0\d{9,10}\z/ }
+  validates :user_tel, presence: true, format: { with: this.TEL_REGEX }
   # \A: 行頭 \z: 行末
   # /i: 大文字小文字を区別しない
-  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i }
+  validates :user_email, presence: true, length: { maximum: 100 }, format: { with: this.EMAIL_REGEX }
 
   validates :property_city, presence: true
   validates :property_address, presence: true
