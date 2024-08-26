@@ -1,6 +1,4 @@
 class AssessmentRequestsController < ApplicationController
-  before_action :get_prefectures, :get_cities
-  
   URL_PARAM = 'beteran-sumai'
 
   # 前のページからイエウールの店舗IDをクエリパラメータで受け取る
@@ -8,12 +6,18 @@ class AssessmentRequestsController < ApplicationController
   def new
     @assessment_request_form = AssessmentRequestForm.new
     @assessment_request_form.branch_id = params[:branch_id]
+
+   @prefectures = Prefecture.all
+    @cities = City.all 
   end
 
   def create
     @assessment_request_form = AssessmentRequestForm.new(assessment_request_params)
     @assessment_request_form.branch_id = params[:branch_id]
     @assessment_request_form.url_param = URL_PARAM
+
+    @prefectures = Prefecture.all
+    @cities = City.all
 
     if @assessment_request_form.valid?
       # TODO: イエウールのAPIを叩いて査定依頼を送信する
@@ -54,13 +58,5 @@ class AssessmentRequestsController < ApplicationController
         :property_room_plan,
         :property_constructed_year
       )
-  end
-
-  def get_prefectures
-    @prefectures = Prefecture.all
-  end
-
-  def get_cities
-    @cities = City.all
   end
 end
