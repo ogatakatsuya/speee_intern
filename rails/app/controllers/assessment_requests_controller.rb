@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssessmentRequestsController < ApplicationController
   URL_PARAM = 'beteran-sumai'
 
@@ -7,8 +9,8 @@ class AssessmentRequestsController < ApplicationController
     @assessment_request_form = AssessmentRequestForm.new
     @assessment_request_form.branch_id = params[:branch_id]
 
-   @prefectures = Prefecture.all
-    @cities = City.all 
+    @prefectures = Prefecture.all
+    @cities = City.all
   end
 
   def create
