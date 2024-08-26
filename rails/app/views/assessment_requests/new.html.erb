@@ -1,5 +1,15 @@
 <h2>査定依頼フォーム</h2>
 
+<% if @assessment_request_form.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @assessment_request_form.errors.to_hash(true).each do |attribute, messages| %>
+        <li><%= messages.first %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <!-- local: trueを書くと同期通信になる -->
 <!-- リクエストを送ると必ずレスポンスを受け取る -->
 <%= form_with model: @assessment_request_form, url: assessment_requests_path, local: true do |form| %>

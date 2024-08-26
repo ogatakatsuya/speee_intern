@@ -1,0 +1,68 @@
+ja:
+  activemodel:
+    attributes:
+      assessment_request_form:
+        :user_first_name: "名字"
+        :user_last_name: "名前"
+        :user_first_name_kana: "名字（カナ）"
+        :user_last_name_kana: "名前（カナ）"
+        :user_tel: "電話番号"
+        :user_email: "メールアドレス"
+        :property_city: "市区町村"
+        :property_address: "住所"
+        :property_type: "物件種別"
+        :property_exclusive_area: "専有面積"
+        :property_land_area: "土地面積"
+        :property_building_area: "建物面積"
+        :property_building_area_unit: "建物面積単位"
+        :property_floor_area: "床面積"
+        :property_room_plan: "間取り"
+        :property_constructed_year: "築年数"
+    errors:
+      models:
+        assessment_request_form:
+          attributes:
+            user_first_name:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+            user_last_name:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+            user_first_name_kana:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+            user_last_name_kana:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+            user_tel:
+              blank: "を入力してください"
+              invalid: "は0始まりかつ10〜11桁の数字でなければなりません"
+            user_email:
+              blank: "を入力してください"
+              too_long: "は%{count}文字以内で入力してください"
+              invalid: "の形式が正しくありません"
+            property_city:
+              blank: "を選択してください"
+            property_address:
+              blank: "を入力してください"
+            property_type:
+              blank: "を選択してください"
+              not_included_in_list: "は選択肢の中からお選びください"
+            property_exclusive_area:
+              blank: "を入力してください"
+            property_land_area:
+              blank: "を入力してください"
+            property_building_area:
+              blank: "を入力してください"
+            property_building_area_unit:
+              blank: "を入力してください"
+              not_included_in_list: "は選択肢の中からお選びください"
+            property_floor_area:
+              blank: "を入力してください"
+            property_room_plan:
+              blank: "を入力してください"
+              not_included_in_list: "は選択肢の中からお選びください"
+            property_constructed_year:
+              format: "%{message}"
+              blank: "築年数を入力してください"
+              not_included_in_list: "1925〜2016年築の物件のみ査定を受け付けております"
