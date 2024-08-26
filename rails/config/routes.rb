@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     member do
       get :cities
     end
+    get :done, on: :collection
   end
 end
