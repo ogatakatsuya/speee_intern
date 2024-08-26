@@ -58,7 +58,8 @@ class AssessmentRequestsController < ApplicationController
         :property_building_area_unit,
         :property_floor_area,
         :property_room_plan,
-        :property_constructed_year
+        :property_constructed_year,
+        :property_prefecture_id
       )
   end
 end
