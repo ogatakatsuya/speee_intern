@@ -15,13 +15,10 @@ export default class AssessmentRequestFormController extends Controller {
     "propertyPrefectureId",
     "propertyCityId",
     "propertyAddress",
-    // "propertyType",
     "propertyExclusiveArea",
     "propertyLandArea",
     "propertyBuildingArea",
-    // "propertyBuildingAreaUnit",
     "propertyFloorArea",
-    // "propertyRoomPlan",
     "propertyConstructedYear"
   ]
 
@@ -32,15 +29,11 @@ export default class AssessmentRequestFormController extends Controller {
     "userFirstNameKanaErrorMessage",
     "userTelErrorMessage",
     "userEmailErrorMessage",
-    // "propertyCityErrorMessage",
     "propertyAddressErrorMessage",
-    // "propertyTypeErrorMessage",
     "propertyExclusiveAreaErrorMessage",
     "propertyLandAreaErrorMessage",
     "propertyBuildingAreaErrorMessage",
-    // "propertyBuildingAreaUnitErrorMessage",
     "propertyFloorAreaErrorMessage",
-    // "propertyRoomPlanErrorMessage",
     "propertyConstructedYearErrorMessage"
   ]
 
