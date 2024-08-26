@@ -43,7 +43,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userLastNameTarget = this.userLastNameTarget
     const errorMessageTarget = this.userLastNameErrorMessageTarget
 
-    userLastNameTarget.className = "border border-danger border-2 form-control form-control"
+    userLastNameTarget.className = "border border-danger border-2 form-control"
 
     const userLastName = userLastNameTarget.value
     if (userLastName === "") {
