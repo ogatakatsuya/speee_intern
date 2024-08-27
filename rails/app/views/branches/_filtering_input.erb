@@ -1,0 +1,60 @@
+<%=
+  form_with(
+    model: filtering_input_form,
+    url: area_filtering_path,
+    local: true,
+    data: {
+      controller: "area-filtering"
+    }
+   ) do |form|
+  %>
+
+<div class="mb-3">
+    <%= form.label :prefecture_id, "物件の都道府県" %>
+    <%=
+    form.collection_select(
+        :prefecture_id,
+        @prefectures,
+        :id,
+        :name,
+        {
+        prompt: "都道府県を選択してください",
+        required: true
+        },
+        {
+        class: "form-select", 
+        data: {
+            assessment_request_form_target: "propertyPrefectureId",
+            action: "change->assessment-request-form#updateCities"
+        }
+        }
+    )
+    %>
+</div>
+
+<div class="mb-3">
+    <%= form.label :city_id, "物件の市区町村" %>
+    <%=
+    form.collection_select(
+        :city_id,
+        @cities,
+        :id,
+        :name,
+        {
+        prompt: "市区町村を選択してください",
+        required: true
+        },
+        {
+        class: "form-select", 
+        data: {
+            assessment_request_form_target: "propertyCityId",
+            action: "change->assessment-request-form#updateBranches"
+        }
+        }
+    )
+    %>
+</div>
+
+<button class="btn btn-primary">検索</button>
+
+<% end %>

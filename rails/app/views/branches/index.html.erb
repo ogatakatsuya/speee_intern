@@ -1,5 +1,8 @@
 <% provide(:title, "店舗一覧") %>
 <div class="m-4">
+  <div>
+    <%= render partial: "filtering_input", locals:{filtering_input_form: @filtering_input_form, prefectures: @prefectures, cities: @cities} %>
+  </div>
   <div class="row">
     <% @branches.each do |branch| %>
       <%= render branch %>
