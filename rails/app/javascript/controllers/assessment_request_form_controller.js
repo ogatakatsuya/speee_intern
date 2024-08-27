@@ -14,6 +14,7 @@ export default class AssessmentRequestFormController extends Controller {
     "userEmail",
     "propertyPrefectureId",
     "propertyCityId",
+    "propertyBranchId",
     "propertyAddress",
     "propertyExclusiveArea",
     "propertyLandArea",
@@ -43,7 +44,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userLastNameTarget = this.userLastNameTarget
     const errorMessageTarget = this.userLastNameErrorMessageTarget
 
-    userLastNameTarget.className = "border border-danger border-2"
+    userLastNameTarget.className = "border border-danger border-2 form-control"
 
     const userLastName = userLastNameTarget.value
     if (userLastName === "") {
@@ -51,7 +52,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (userLastName.length > 15) {
       errorMessageTarget.textContent = "名字は15文字以下にしてください"
     } else {
-      userLastNameTarget.className = ""
+      userLastNameTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -60,7 +61,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userFirstNameTarget = this.userFirstNameTarget
     const errorMessageTarget = this.userFirstNameErrorMessageTarget
 
-    userFirstNameTarget.className = "border border-danger border-2"
+    userFirstNameTarget.className = "border border-danger border-2 form-control"
 
     const userFirstName = userFirstNameTarget.value
     if (userFirstName === "") {
@@ -68,7 +69,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (userFirstName.length > 15) {
       errorMessageTarget.textContent = "名前は15文字以下にしてください"
     } else {
-      userFirstNameTarget.className = ""
+      userFirstNameTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -77,7 +78,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userLastNameKanaTarget = this.userLastNameKanaTarget
     const errorMessageTarget = this.userLastNameKanaErrorMessageTarget
 
-    userLastNameKanaTarget.className = "border border-danger border-2"
+    userLastNameKanaTarget.className = "border border-danger border-2 form-control"
 
     const userLastNameKana = userLastNameKanaTarget.value
     if (userLastNameKana === "") {
@@ -85,7 +86,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (userLastNameKana.length > 30) {
       errorMessageTarget.textContent = "名字のフリガナは30文字以内で入力してください"
     } else {
-      userLastNameKanaTarget.className = ""
+      userLastNameKanaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -94,7 +95,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userFirstNameKanaTarget = this.userFirstNameKanaTarget
     const errorMessageTarget = this.userFirstNameKanaErrorMessageTarget
 
-    userFirstNameKanaTarget.className = "border border-danger border-2"
+    userFirstNameKanaTarget.className = "border border-danger border-2 form-control"
 
     const userFirstNameKana = userFirstNameKanaTarget.value
     if (userFirstNameKana === "") {
@@ -102,7 +103,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (userFirstNameKana.length > 30) {
       errorMessageTarget.textContent = "名前のフリガナは30文字以内で入力してください"
     } else {
-      userFirstNameKanaTarget.className = ""
+      userFirstNameKanaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -111,7 +112,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userTelTarget = this.userTelTarget
     const errorMessageTarget = this.userTelErrorMessageTarget
 
-    userTelTarget.className = "border border-danger border-2"
+    userTelTarget.className = "border border-danger border-2 form-control"
 
     const userTel = userTelTarget.value
     const telRegex = /^0\d{9,10}$/
@@ -120,7 +121,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (!telRegex.test(userTel)) {
       errorMessageTarget.textContent = "電話番号は0始まりかつ10〜11桁の数字で入力してください"
     } else {
-      userTelTarget.className = ""
+      userTelTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -129,7 +130,7 @@ export default class AssessmentRequestFormController extends Controller {
     const userEmailTarget = this.userEmailTarget
     const errorMessageTarget = this.userEmailErrorMessageTarget
 
-    userEmailTarget.className = "border border-danger border-2"
+    userEmailTarget.className = "border border-danger border-2 form-control"
 
     const userEmail = userEmailTarget.value
     const emailRegex = /^[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+$/i
@@ -140,7 +141,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (!emailRegex.test(userEmail)) {
       errorMessageTarget.textContent = "メールアドレスの形式が正しくありません"
     } else {
-      userEmailTarget.className = ""
+      userEmailTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -149,12 +150,12 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyAddressTarget = this.propertyAddressTarget
     const errorMessageTarget = this.propertyAddressErrorMessageTarget
 
-    propertyAddressTarget.className = "border border-danger border-2"
+    propertyAddressTarget.className = "border border-danger border-2 form-control"
 
     if (propertyAddressTarget.value === "") {
       errorMessageTarget.textContent = "住所を入力してください"
     } else {
-      propertyAddressTarget.className = ""
+      propertyAddressTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -163,7 +164,7 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyExclusiveAreaTarget = this.propertyExclusiveAreaTarget
     const errorMessageTarget = this.propertyExclusiveAreaErrorMessageTarget
 
-    propertyExclusiveAreaTarget.className = "border border-danger border-2"
+    propertyExclusiveAreaTarget.className = "border border-danger border-2 form-control"
 
     const propertyExclusiveArea = propertyExclusiveAreaTarget.value
     if (propertyExclusiveArea === "") {
@@ -173,7 +174,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (propertyExclusiveArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
     } else {
-      propertyExclusiveAreaTarget.className = ""
+      propertyExclusiveAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -182,7 +183,7 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyLandAreaTarget = this.propertyLandAreaTarget
     const errorMessageTarget = this.propertyLandAreaErrorMessageTarget
 
-    propertyLandAreaTarget.className = "border border-danger border-2"
+    propertyLandAreaTarget.className = "border border-danger border-2 form-control"
 
     const propertyLandArea = propertyLandAreaTarget.value
     if (propertyLandArea === "") {
@@ -192,7 +193,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (propertyLandArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
     } else {
-      propertyLandAreaTarget.className = ""
+      propertyLandAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -201,7 +202,7 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyBuildingAreaTarget = this.propertyBuildingAreaTarget
     const errorMessageTarget = this.propertyBuildingAreaErrorMessageTarget
 
-    propertyBuildingAreaTarget.className = "border border-danger border-2"
+    propertyBuildingAreaTarget.className = "border border-danger border-2 form-control"
 
     const propertyBuildingArea = propertyBuildingAreaTarget.value
     if (propertyBuildingArea === "") {
@@ -211,7 +212,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (propertyBuildingArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
     } else {
-      propertyBuildingAreaTarget.className = ""
+      propertyBuildingAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -220,7 +221,7 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyFloorAreaTarget = this.propertyFloorAreaTarget
     const errorMessageTarget = this.propertyFloorAreaErrorMessageTarget
 
-    propertyFloorAreaTarget.className = "border border-danger border-2"
+    propertyFloorAreaTarget.className = "border border-danger border-2 form-control"
 
     const propertyFloorArea = propertyFloorAreaTarget.value
     if (propertyFloorArea === "") {
@@ -230,7 +231,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if (propertyFloorArea < 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
     } else {
-      propertyFloorAreaTarget.className = ""
+      propertyFloorAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -239,7 +240,7 @@ export default class AssessmentRequestFormController extends Controller {
     const propertyConstructedYearTarget = this.propertyConstructedYearTarget
     const errorMessageTarget = this.propertyConstructedYearErrorMessageTarget
 
-    propertyConstructedYearTarget.className = "border border-danger border-2"
+    propertyConstructedYearTarget.className = "border border-danger border-2 form-control"
 
     const propertyConstructedYear = propertyConstructedYearTarget.value
     if (propertyConstructedYear === "") {
@@ -249,7 +250,7 @@ export default class AssessmentRequestFormController extends Controller {
     } else if(propertyConstructedYear < 1925 || 2016 < propertyConstructedYear){
       errorMessageTarget.textContent = "1925〜2016年築の物件のみ査定を受け付けております"
     } else {
-      propertyConstructedYearTarget.className = ""
+      propertyConstructedYearTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
   }
@@ -287,7 +288,7 @@ export default class AssessmentRequestFormController extends Controller {
     if(prefectureId){
       const propertyCityIdTarget = this.propertyCityIdTarget
 
-      fetch(`/assessment_requests/${prefectureId}/cities`)
+      fetch(`/api/assessment_requests/${prefectureId}/cities`)
         .then(response => response.json())
         .then(data => {
           // 選択肢を初期化
@@ -299,7 +300,40 @@ export default class AssessmentRequestFormController extends Controller {
             option.textContent = city.name;
             propertyCityIdTarget.appendChild(option);
           });
+          this.propertyCityIdTarget.value = data[0].id
+          this.updateBranches()
         });
     }
   }
+
+  updateBranches(){
+    const cityId = this.propertyCityIdTarget.value;
+    if(cityId){
+      const propertyBranchIdTarget = this.propertyBranchIdTarget;
+  
+      fetch(`/api/assessment_requests/${cityId}/branches`)
+        .then(response => response.json())
+        .then(data => {
+          // 選択肢を初期化
+          propertyBranchIdTarget.innerHTML = "";
+  
+          if (data.length === 0) {
+            // 取得した店舗がない場合、メッセージを表示
+            const messageOption = document.createElement("option");
+            messageOption.value = "";
+            messageOption.textContent = "査定依頼できる店舗がありません";
+            propertyBranchIdTarget.appendChild(messageOption);
+          } else {
+            // 取得した店舗を選択肢に追加
+            data.forEach(branch => {
+              const option = document.createElement("option");
+              option.value = branch.id;
+              option.textContent = branch.name;
+              propertyBranchIdTarget.appendChild(option);
+            });
+          }
+        })
+    }
+  }
+  
 }

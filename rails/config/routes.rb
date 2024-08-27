@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       get :cities
     end
+    get :done, on: :collection
   end
 
   get '/api/assessment_requests/:id/cities', to: 'assessment_requests#cities'

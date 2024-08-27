@@ -1,3 +1,4 @@
+<% provide(:title, "査定依頼フォーム") %>
 <h2>査定依頼フォーム</h2>
 
 <% if @assessment_request_form.errors.any? %>
@@ -10,8 +11,6 @@
   </div>
 <% end %>
 
-<!-- local: trueを書くと同期通信になる -->
-<!-- リクエストを送ると必ずレスポンスを受け取る -->
 <%=
   form_with(
     model: @assessment_request_form,
@@ -25,16 +24,16 @@
   %>
   <!-- イエウールの店舗IDを隠しフィールドとして渡す -->
   <!-- チュートリアルの第12章を参照 -->
-  <%= hidden_field_tag :branch_id, @assessment_request_form.branch_id %>
 
-  <div>
+  <div class="row">
     <span>お名前</span>
-    <div>
+    <div class="col-md-6">
       <%=
         form.text_field(
           :user_last_name,
           placeholder: "田中",
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "userLastName",
             action: "input->assessment-request-form#validateUserLastName"
@@ -42,12 +41,13 @@
         )
       %>
     </div>
-    <div>
+    <div class="col-md-6">
       <%=
         form.text_field(
           :user_first_name,
           placeholder: "太郎",
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "userFirstName",
             action: "input->assessment-request-form#validateUserFirstName"
@@ -57,19 +57,20 @@
     </div>
     <p>
       <div data-assessment-request-form-target="userLastNameErrorMessage"  class="text-danger"></div>
-      <div data-assessment-request-form-target="userFirstNameErrorMessage" class="text-danger" ></div>
+      <div data-assessment-request-form-target="userFirstNameErrorMessage" class="text-danger"></div>
     </p>
   </div>
 
-  <div>
+  <div class="row">
     <span>フリガナ</span>
-    <div>
+    <div class="col-md-6">
       <%=
         form.text_field(
           :user_last_name_kana,
           {
             placeholder: "タナカ",
             required: true,
+            class: "form-control", 
             data: {
               assessment_request_form_target: "userLastNameKana",
               action: "input->assessment-request-form#validateUserLastNameKana"
@@ -78,12 +79,13 @@
         )
       %>
     </div>
-    <div>
+    <div class="col-md-6">
       <%=
         form.text_field(
           :user_first_name_kana,
           {
             placeholder: "タロウ",
+            class: "form-control", 
             data: {
               assessment_request_form_target: "userFirstNameKana",
               action: "input->assessment-request-form#validateUserFirstNameKana"
@@ -98,7 +100,7 @@
     </p>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :user_tel, "電話番号" %>
     <%=
       form.telephone_field(
@@ -106,6 +108,7 @@
         {
           placeholder: "09012345678",
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "userTel",
             action: "input->assessment-request-form#validateUserTel"
@@ -116,7 +119,7 @@
     <div data-assessment-request-form-target="userTelErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :user_email, "メールアドレス" %>
     <%=
       form.email_field(
@@ -124,6 +127,7 @@
         {
           placeholder: "test@example.jp",
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "userEmail",
             action: "input->assessment-request-form#validateUserEmail"
@@ -134,11 +138,11 @@
     <div data-assessment-request-form-target="userEmailErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_prefecture, "物件の都道府県" %>
     <%=
       form.collection_select(
-        :property_prefectur_id,
+        :property_prefecture_id,
         @prefectures,
         :id,
         :name,
@@ -147,6 +151,7 @@
           required: true
         },
         {
+          class: "form-select", 
           data: {
             assessment_request_form_target: "propertyPrefectureId",
             action: "change->assessment-request-form#updateCities"
@@ -156,8 +161,8 @@
     %>
   </div>
 
-  <div>
-    <%= form.label :property_city, "物件の市区町村" %>
+  <div class="mb-3">
+    <%= form.label :property_city_id, "物件の市区町村" %>
     <%=
       form.collection_select(
         :property_city_id,
@@ -169,15 +174,39 @@
           required: true
         },
         {
+          class: "form-select", 
           data: {
             assessment_request_form_target: "propertyCityId",
+            action: "change->assessment-request-form#updateBranches"
           }
         }
       )
     %>
   </div>
 
-  <div>
+  <div class="mb-3">
+    <%= form.label :branch_id, "査定依頼を行う店舗" %>
+    <%=
+      form.collection_select(
+        :branch_id,
+        @branches,
+        :id,
+        :name,
+        {
+          prompt: "店舗を選択してください",
+          required: true
+        },
+        {
+          class: "form-select", 
+          data: {
+            assessment_request_form_target: "propertyBranchId",
+          }
+        }
+      )
+    %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :property_address, "物件の住所" %>
     <%=
       form.text_field(
@@ -185,6 +214,7 @@
         {
           placeholder: "港区六本木3-2-1",
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "propertyAddress",
             action: "input->assessment-request-form#validatePropertyAddress"
@@ -195,7 +225,7 @@
     <div data-assessment-request-form-target="propertyAddressErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_type, "物件種別" %>
     <%=
       form.select(
@@ -208,12 +238,34 @@
         {
           include_blank: "物件種別を選択してください",
           required: true
+        },
+        {
+          class: "form-select" 
         }
       )
     %>
   </div>
 
-  <div>
+    <div class="mb-3">
+    <%= form.label :property_building_area_unit, "面積単位" %>
+    <div>
+      <%=
+        form.select(
+          :property_building_area_unit,
+          options_for_select([[ '平方メートル', 1 ], [ '坪', 2 ]]),
+          {
+            include_blank: "面積単位を選択してください",
+            required: true
+          },
+          {
+            class: "form-select" 
+          }
+        )
+      %>
+    </div>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :property_exclusive_area, "専有面積" %>
     <%=
       form.number_field(
@@ -221,6 +273,7 @@
         {
           step: 0.01,
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "propertyExclusiveArea",
             action: "input->assessment-request-form#validatePropertyExclusiveArea"
@@ -231,7 +284,7 @@
     <div data-assessment-request-form-target="propertyExclusiveAreaErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_land_area, "土地面積" %>
     <%=
       form.number_field(
@@ -239,6 +292,7 @@
         {
           step: 0.01,
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "propertyLandArea",
             action: "input->assessment-request-form#validatePropertyLandArea"
@@ -249,9 +303,8 @@
     <div data-assessment-request-form-target="propertyLandAreaErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_building_area, "建物面積" %>
-    <span>建物面積</span>
     <div>
       <%=
         form.number_field(
@@ -259,6 +312,7 @@
           {
             step: 0.01,
             required: true,
+            class: "form-control", 
             data: {
               assessment_request_form_target: "propertyBuildingArea",
               action: "input->assessment-request-form#validatePropertyBuildingArea"
@@ -266,23 +320,11 @@
           }
         )
       %>
+      <div data-assessment-request-form-target="propertyBuildingAreaErrorMessage" class="text-danger"></div>
     </div>
-    <div>
-      <%=
-        form.select(
-          :property_building_area_unit,
-          options_for_select([[ '平方メートル', 1 ], [ '坪', 2 ]]),
-          {
-            include_blank: "面積単位を選択してください",
-            required: true
-          }
-        )
-      %>
-    </div>
-    <div data-assessment-request-form-target="propertyBuildingAreaErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_floor_area, "延床面積" %>
     <%=
       form.number_field(
@@ -290,6 +332,7 @@
         {
           step: 0.01,
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "propertyFloorArea",
             action: "input->assessment-request-form#validatePropertyFloorArea"
@@ -300,7 +343,7 @@
     <div data-assessment-request-form-target="propertyFloorAreaErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_room_plan, "間取り" %>
     <%= form.select(
         :property_room_plan,
@@ -324,13 +367,16 @@
         {
           include_blank: "間取りを選択してください",
           required: true
+        },
+        {
+          class: "form-select" 
         }
       )
     %>
     <div data-assessment-request-form-target="propertyRoomPlanErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :property_constructed_year, "築年数" %>
     <%=
       form.number_field(
@@ -339,6 +385,7 @@
           placeholder: "2016",
           in: 1925..2016,
           required: true,
+          class: "form-control", 
           data: {
             assessment_request_form_target: "propertyConstructedYear",
             action: "input->assessment-request-form#validatePropertyConstructedYear"
@@ -349,12 +396,13 @@
     <div data-assessment-request-form-target="propertyConstructedYearErrorMessage" class="text-danger"></div>
   </div>
 
-  <div>
+  <div class="mb-3">
     <%=
       form.submit(
         "査定依頼を送信する",
         {
           disabled: true,
+          class: "btn btn-primary",
           data: {
             assessment_request_form_target: "submitButton"
           }

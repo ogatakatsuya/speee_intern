@@ -1,3 +1,4 @@
+<% provide(:title, @branch.name) %>
 <div class="container my-4">
   <h1 class="mb-4">
     <%= @branch.name %>
@@ -11,32 +12,35 @@
         <div class="mb-4">
           <strong>キャッチコピー:</strong> <span class="d-block"><%= @branch.catch_copy %></span>
         </div>
-
         <div class="mb-4">
           <strong>紹介文:</strong> <span class="d-block"><%= @branch.introduction %></span>
         </div>
     </div>
   </div>
 
-  <div class="branch-info mb-4">
-    <h2 class="h4 mb-4"><%= @branch.name %>について</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div>企業名 : <%= @branch.company.name %></div>
-        <div>郵便番号 : <%= @branch.post_code %></div>
-        <div>住所 : <%= @branch.full_address %></div>
-      </div>
-      <div class="col-md-6">
-        <div>電話番号 : <%= @branch.phone_number %></div>
-        <div>FAX : <%= @branch.fax_number %></div>
-        <div>営業時間 : <%= @branch.open_hours %></div>
-        <div>定休日 : <%= @branch.closed_days %></div>
+  <div class="row mt-3 mb-3 mr-4">
+    <div class="col-md-4">
+      <%= render partial: "radar_chart", locals: { reviews: @branch.reviews } %>
+    </div>
+    <div class="col-md-7 ms-auto">
+      <div class="branch-info mt-5">
+        <h2 class="h5 fw-bold mb-4"><%= @branch.name %>について</h2>
+          <div class="d-grid gap-2 ms-auto">
+            <div><strong>企業名 :</strong> <%= @branch.company.name %></div>
+            <div><strong>郵便番号 :</strong> <%= @branch.post_code %></div>
+            <div><strong>住所 :</strong> <%= @branch.full_address %></div>
+            <div><strong>電話番号 :</strong> <%= @branch.phone_number %></div>
+            <div><strong>FAX :</strong> <%= @branch.fax_number %></div>
+            <div><strong>営業時間 :</strong> <%= @branch.open_hours %></div>
+            <div><strong>定休日 :</strong> <%= @branch.closed_days %></div>
+          </div>
       </div>
     </div>
   </div>
 
+
   <div class="reviews mb-4">
-    <h2 class="h4"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 <%= @branch.reviews.average(:company_satisfaction_id).round(1) %>）</h2>
+    <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 <%= @branch.reviews.average(:company_satisfaction_id).round(1) %>）</h2>
     <hr>
     <% @branch.reviews.each do |review| %>
       <%= render partial: "review", locals: { review: review } %>
