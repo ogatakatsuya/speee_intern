@@ -300,9 +300,12 @@ export default class AssessmentRequestFormController extends Controller {
             option.textContent = city.name;
             propertyCityIdTarget.appendChild(option);
           });
+          this.propertyCityIdTarget.value = data[0].id
+          this.updateBranches()
         });
     }
   }
+
   updateBranches(){
     const cityId = this.propertyCityIdTarget.value;
     if(cityId){
