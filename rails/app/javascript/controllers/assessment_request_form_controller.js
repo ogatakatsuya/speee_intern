@@ -287,7 +287,7 @@ export default class AssessmentRequestFormController extends Controller {
     if(prefectureId){
       const propertyCityIdTarget = this.propertyCityIdTarget
 
-      fetch(`/assessment_requests/${prefectureId}/cities`)
+      fetch(`/api/assessment_requests/${prefectureId}/cities`)
         .then(response => response.json())
         .then(data => {
           // 選択肢を初期化
