@@ -13,4 +13,9 @@ Rails.application.routes.draw do
       get :cities
     end
   end
+
+  get '/api/assessment_requests/:id/cities', to: 'assessment_requests#cities'
+  get '/api/assessment_requests/:id/branches', to: 'assessment_requests#branches'
+  # branch_by_name_path(name: 'tokyo')という名前付きルーティングが使えるようになる
+  get 'branches/:name', to: 'branches#show', as: :branch_by_name
 end

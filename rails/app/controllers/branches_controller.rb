@@ -6,6 +6,13 @@ class BranchesController < ApplicationController
   end
 
   def show
-    @branch = Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
+    @branch = if params[:id] && params[:id] =~ /^\d+$/
+                # `id` が数値の場合
+                Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
+              else
+                # `id` が数値でない場合は `name` で検索
+                Branch.preload(:company, { city: :prefecture },
+                               reviews: { city: :prefecture }).find_by(name: params[:id])
+              end
   end
 end
