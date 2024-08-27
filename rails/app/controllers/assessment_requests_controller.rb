@@ -27,6 +27,7 @@ class AssessmentRequestsController < ApplicationController
     if @assessment_request_form.valid?
       # TODO: イエウールのAPIを叩いて査定依頼を送信する
       # TODO: 名前とふりがなを空白で結合
+      redirect_to action: :done, status: :see_other
     else
       # Turboの仕様により422を返す必要がある
       render :new, status: :unprocessable_entity
@@ -40,6 +41,8 @@ class AssessmentRequestsController < ApplicationController
     end
   end
 
+  def done; end
+  
   def branches
     @city = City.find_by(id: params[:id])
     return unless @city
