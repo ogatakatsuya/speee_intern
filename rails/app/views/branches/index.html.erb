@@ -1,3 +1,4 @@
+<% provide(:title, "店舗一覧") %>
 <div class="m-4">
   <div class="row">
     <% @branches.each do |branch| %>
@@ -5,5 +6,4 @@
     <% end %>
   </div>
 </div>
-
 <%= will_paginate previous_label: '前へ', next_label: '次へ' %>

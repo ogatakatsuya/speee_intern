@@ -14,4 +14,7 @@ Rails.application.routes.draw do
     end
     get :done, on: :collection
   end
+
+  get '/api/assessment_requests/:id/cities', to: 'assessment_requests#cities'
+  get '/api/assessment_requests/:id/branches', to: 'assessment_requests#branches'
 end
