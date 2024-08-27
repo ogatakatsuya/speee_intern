@@ -8,11 +8,18 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      body {
+        padding-top: 56px; /* Adjust this value based on the height of your navbar */
+      }
+    </style>
   </head>
 
   <body>
-    <div class="container">
-        <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container my-4">
+      <%= yield %>
     </div>
   </body>
 </html>
