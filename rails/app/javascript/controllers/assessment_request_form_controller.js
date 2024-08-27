@@ -14,6 +14,7 @@ export default class AssessmentRequestFormController extends Controller {
     "userEmail",
     "propertyPrefectureId",
     "propertyCityId",
+    "propertyBranchId",
     "propertyAddress",
     "propertyExclusiveArea",
     "propertyLandArea",
@@ -299,7 +300,40 @@ export default class AssessmentRequestFormController extends Controller {
             option.textContent = city.name;
             propertyCityIdTarget.appendChild(option);
           });
+          this.propertyCityIdTarget.value = data[0].id
+          this.updateBranches()
         });
     }
   }
+
+  updateBranches(){
+    const cityId = this.propertyCityIdTarget.value;
+    if(cityId){
+      const propertyBranchIdTarget = this.propertyBranchIdTarget;
+  
+      fetch(`/api/assessment_requests/${cityId}/branches`)
+        .then(response => response.json())
+        .then(data => {
+          // 選択肢を初期化
+          propertyBranchIdTarget.innerHTML = "";
+  
+          if (data.length === 0) {
+            // 取得した店舗がない場合、メッセージを表示
+            const messageOption = document.createElement("option");
+            messageOption.value = "";
+            messageOption.textContent = "査定依頼できる店舗がありません";
+            propertyBranchIdTarget.appendChild(messageOption);
+          } else {
+            // 取得した店舗を選択肢に追加
+            data.forEach(branch => {
+              const option = document.createElement("option");
+              option.value = branch.id;
+              option.textContent = branch.name;
+              propertyBranchIdTarget.appendChild(option);
+            });
+          }
+        })
+    }
+  }
+  
 }
