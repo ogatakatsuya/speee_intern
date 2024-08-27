@@ -45,7 +45,8 @@ class AssessmentRequestForm
   attribute :property_room_plan, :integer
   # 築年数（1925..2016）
   attribute :property_constructed_year, :integer
-  attribute :property_prefecture_id
+  attribute :property_prefecture_id, :integer
+  attribute :branch_id, :integer
 
   validates :user_first_name, presence: true, length: { maximum: 15 }
   validates :user_last_name, presence: true, length: { maximum: 15 }
@@ -66,4 +67,5 @@ class AssessmentRequestForm
   validates :property_floor_area, presence: true
   validates :property_room_plan, presence: true, numericality: { in: 1..13 }
   validates :property_constructed_year, presence: true, numericality: { greater_than_or_equal_to: 1925 }
+  validates :branch_id, presence: true
 end

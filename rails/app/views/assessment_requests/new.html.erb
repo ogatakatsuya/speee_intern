@@ -11,8 +11,6 @@
   </div>
 <% end %>
 
-<!-- local: trueを書くと同期通信になる -->
-<!-- リクエストを送ると必ずレスポンスを受け取る -->
 <%=
   form_with(
     model: @assessment_request_form,
@@ -26,7 +24,6 @@
   %>
   <!-- イエウールの店舗IDを隠しフィールドとして渡す -->
   <!-- チュートリアルの第12章を参照 -->
-  <%= hidden_field_tag :branch_id, @assessment_request_form.branch_id %>
 
   <div class="row">
     <span>お名前</span>
@@ -180,6 +177,29 @@
           class: "form-select", 
           data: {
             assessment_request_form_target: "propertyCityId",
+            action: "change->assessment-request-form#updateBranches"
+          }
+        }
+      )
+    %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :branch_id, "査定依頼を行う店舗" %>
+    <%=
+      form.collection_select(
+        :branch_id,
+        @branches,
+        :id,
+        :name,
+        {
+          prompt: "店舗を選択してください",
+          required: true
+        },
+        {
+          class: "form-select", 
+          data: {
+            assessment_request_form_target: "propertyBranchId",
           }
         }
       )
@@ -226,6 +246,25 @@
     %>
   </div>
 
+    <div class="mb-3">
+    <%= form.label :property_building_area_unit, "面積単位" %>
+    <div>
+      <%=
+        form.select(
+          :property_building_area_unit,
+          options_for_select([[ '平方メートル', 1 ], [ '坪', 2 ]]),
+          {
+            include_blank: "面積単位を選択してください",
+            required: true
+          },
+          {
+            class: "form-select" 
+          }
+        )
+      %>
+    </div>
+  </div>
+
   <div class="mb-3">
     <%= form.label :property_exclusive_area, "専有面積" %>
     <%=
@@ -264,9 +303,9 @@
     <div data-assessment-request-form-target="propertyLandAreaErrorMessage" class="text-danger"></div>
   </div>
 
-  <div class="mb-3 row">
+  <div class="mb-3">
     <%= form.label :property_building_area, "建物面積" %>
-    <div class="col-md-6">
+    <div>
       <%=
         form.number_field(
           :property_building_area,
@@ -281,23 +320,8 @@
           }
         )
       %>
+      <div data-assessment-request-form-target="propertyBuildingAreaErrorMessage" class="text-danger"></div>
     </div>
-    <div class="col-md-6">
-      <%=
-        form.select(
-          :property_building_area_unit,
-          options_for_select([[ '平方メートル', 1 ], [ '坪', 2 ]]),
-          {
-            include_blank: "面積単位を選択してください",
-            required: true
-          },
-          {
-            class: "form-select" 
-          }
-        )
-      %>
-    </div>
-    <div data-assessment-request-form-target="propertyBuildingAreaErrorMessage" class="text-danger"></div>
   </div>
 
   <div class="mb-3">
