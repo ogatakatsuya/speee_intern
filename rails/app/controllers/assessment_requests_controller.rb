@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AssessmentRequestsController < ApplicationController
+  skip_forgery_protection
+
   URL_PARAM = 'beteran-sumai'
 
   # 前のページからイエウールの店舗IDをクエリパラメータで受け取る
