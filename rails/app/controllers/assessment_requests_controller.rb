@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AssessmentRequestsController < ApplicationController
+  skip_forgery_protection
+
   URL_PARAM = 'beteran-sumai'
 
   # 前のページからイエウールの店舗IDをクエリパラメータで受け取る
@@ -58,7 +60,8 @@ class AssessmentRequestsController < ApplicationController
         :property_building_area_unit,
         :property_floor_area,
         :property_room_plan,
-        :property_constructed_year
+        :property_constructed_year,
+        :property_prefecture_id
       )
   end
 end

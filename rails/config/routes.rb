@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       get :cities
     end
   end
+
+  get '/api/assessment_requests/:id/cities', to: 'assessment_requests#cities'
 end
