@@ -25,6 +25,8 @@ class BranchesController < ApplicationController
       filter_branches_by_prefecture
     else
       # 市区町村まで指定した場合
+      redirect_to branches_path and return unless City.exists?(id: params[:city_id])
+
       filter_branches_by_city
     end
   end
@@ -39,11 +41,11 @@ class BranchesController < ApplicationController
   end
 
   def invalid_prefecture_id?
-    params[:prefecture_id].present? && !numeric?(params[:prefecture_id])
+    params[:prefecture_id].nil? || !numeric?(params[:prefecture_id]) || !Prefecture.exists?(id: params[:prefecture_id])
   end
 
   def invalid_city_id?
-    params[:city_id].present? && !numeric?(params[:city_id])
+    params[:city_id].nil? || !numeric?(params[:city_id])
   end
 
   def filtering_by_prefecture?
