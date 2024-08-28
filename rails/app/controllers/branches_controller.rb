@@ -25,8 +25,10 @@ class BranchesController < ApplicationController
     redirect_to branches_path and return if invalid_prefecture_id? || invalid_city_id?
 
     if filtering_by_prefecture?
+      # 都道府県まで指定した場合
       filter_branches_by_prefecture
     else
+      # 市区町村まで指定した場合
       filter_branches_by_city
     end
   end
