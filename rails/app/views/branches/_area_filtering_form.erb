@@ -1,0 +1,73 @@
+<h3 class="mb-4">店舗を検索する</h3>
+<div>
+    <%=
+    form_with(
+    model: area_filtering_form,
+    url: area_filtering_index_path,
+    local: true,
+    data: {
+        controller: "area-filtering-form"
+    }
+    ) do |form|
+    %>
+
+    <div class="mb-3">
+        <%= form.label :prefecture_id, "都道府県" %>
+        <%=
+        form.collection_select(
+            :prefecture_id,
+            prefectures,
+            :id,
+            :name,
+            {
+                prompt: "都道府県を選択してください",
+                required: true
+            },
+            {
+                class: "form-select", 
+                data: {
+                    area_filtering_form_target: "prefectureId",
+                    action: "change->area-filtering-form#updateCities"
+                }
+            }
+        )
+        %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :city_id, "市区町村" %>
+        <%=
+        form.collection_select(
+            :city_id,
+            cities,
+            :id,
+            :name,
+            {
+                prompt: "市区町村を選択してください",
+                required: true
+            },
+            {
+                class: "form-select", 
+                data: {
+                    area_filtering_form_target: "cityId"
+                }
+            }
+        )
+        %>
+    </div>
+
+    <div class="mb-3">
+        <%=
+        form.submit(
+            "店舗を検索する",
+            {
+            class: "btn btn-primary",
+            data: {
+                assessment_request_form_target: "submitButton"
+            }
+            }
+        )
+        %>
+    </div>
+    <% end %>
+</div>

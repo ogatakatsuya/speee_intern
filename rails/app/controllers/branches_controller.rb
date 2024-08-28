@@ -3,7 +3,7 @@
 class BranchesController < ApplicationController
   def index
     @branches = Branch.preload(:reviews).paginate(page: params[:page], per_page: 10)
-    @filtering_input_form = FilteringInputForm.new
+    @area_filtering_form = AreaFilteringForm.new
     @prefectures = Prefecture.all
     @cities = City.all
   end

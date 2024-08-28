@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
-class FilteringInputForm
+class AreaFilteringForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  # 都道府県ID
   attribute :prefecture_id, :integer
-  # 市区町村Id
-  attribute :city_id, :string
+  attribute :city_id, :integer
 
   validates :prefecture_id, presence: true
-  validates :city_id, presence: true
 end

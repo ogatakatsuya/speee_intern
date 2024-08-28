@@ -3,7 +3,7 @@
 <div class="container">
 <h5 class="fw-bold">基本情報</h5>
     <div>売却した不動産会社名 : <%= @review.branch.name %></div>
-    <div>住所 :  <%= @review.branch.city_adress %></div>
+    <div>住所 :  <%= @review.branch.city_address %></div>
     <div>売却の理由 : <%= SaleReason.find(@review.sale_reason_id).reason %></div>
     <div>売却経験 : <%= SalesCount.find(@review.sales_count_id).count %></div>
     <div>性別 : <%= Gender.find(@review.gender_id).gender %></div>
