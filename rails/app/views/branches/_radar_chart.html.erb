@@ -7,14 +7,16 @@ var ctx = document.getElementById('review-radar-chart');
 
 // FIXME: コントローラー側で点数を計算させてlocals: {}に入れる
 // ↓は適当
-const branchName = "<%= reviews.first!.branch.name %>"
+const average_correspond_satisfaction = "<%= average_responsiveness_satisfaction %>"
+const normalized_sales_value = "<%= normalized_sales_satisfaction %>"
+const normalized_sale_data_value = "<%= normalized_sales_speed %>"
 
 var myChart = new Chart(ctx, {
     type: 'radar',
     data: {
         labels: ['対応満足度', '売却価格', '売却スピード'],
         datasets: [{
-            data: [1, 2, 3],
+            data: [average_correspond_satisfaction, normalized_sales_value, normalized_sale_data_value],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
