@@ -20,9 +20,8 @@ Rails.application.routes.draw do
   end
   resources :area_filtering, only: %i[create]
 
-  get '/api/assessment_requests/:id/cities', to: 'assessment_requests#cities'
+  get '/api/:id/cities', to: 'assessment_requests#cities'
   get '/api/assessment_requests/:id/branches', to: 'assessment_requests#branches'
-  get '/api/area_filtering/:id/cities', to: 'area_filtering#cities'
   # branch_by_name_path(id: 1, name: 'tokyo')という名前付きルーティングが使えるようになる
   get 'branches/:id/:name', to: 'branches#show', as: :branch_by_name
 end

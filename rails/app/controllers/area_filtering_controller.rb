@@ -13,13 +13,6 @@ class AreaFilteringController < ApplicationController
     end
   end
 
-  def cities
-    @cities = City.where(prefecture_id: params[:id])
-    respond_to do |format|
-      format.json { render json: @cities }
-    end
-  end
-
   private
 
   def area_filtering_params

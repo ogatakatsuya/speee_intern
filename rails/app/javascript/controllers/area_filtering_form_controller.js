@@ -15,7 +15,7 @@ export default class AreaFilteringFormController extends Controller {
         cityIdTarget.appendChild(allCitiesOption);
 
         if (prefectureId) {
-            fetch(`/api/area_filtering/${prefectureId}/cities`)
+            fetch(`/api/${prefectureId}/cities`)
                 .then(response => response.json())
                 .then(data => {
                     // 取得した市区町村を選択肢に追加
