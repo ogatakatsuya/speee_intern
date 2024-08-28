@@ -17,8 +17,8 @@ class AssessmentRequestsController < ApplicationController
     @assessment_request_form.branch_id = params[:branch_id]
 
     @prefectures = Prefecture.all
-    @cities = City.all
-    @branches = Branch.all
+    @cities = []
+    @branches = []
   end
 
   def create
@@ -26,8 +26,8 @@ class AssessmentRequestsController < ApplicationController
     @assessment_request_form.url_param = URL_PARAM
 
     @prefectures = Prefecture.all
-    @cities = City.all
-    @branches = Branch.all
+    @cities = []
+    @branches = []
 
     if @assessment_request_form.valid?
       # TODO: イエウールのAPIを叩いて査定依頼を送信する

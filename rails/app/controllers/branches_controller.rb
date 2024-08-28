@@ -37,7 +37,7 @@ class BranchesController < ApplicationController
 
   def load_dependencies
     @prefectures = Prefecture.all
-    @cities = City.all
+    @cities = []
     @area_filtering_form = AreaFilteringForm.new
     @branches = Branch.preload(:company, city: :prefecture, reviews: { city: :prefecture })
   end

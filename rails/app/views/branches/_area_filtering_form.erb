@@ -37,22 +37,22 @@
     <div class="mb-3">
         <%= form.label :city_id, "市区町村" %>
         <%=
-        form.collection_select(
-            :city_id,
-            cities,
-            :id,
-            :name,
-            {
-                prompt: "市区町村を選択してください",
-                required: true
-            },
-            {
-                class: "form-select", 
-                data: {
-                    area_filtering_form_target: "cityId"
+            form.collection_select(
+                :city_id,
+                cities,
+                :id,
+                :name,
+                {
+                    prompt: "市区町村を選択してください",
+                    required: true
+                },
+                {
+                    class: "form-select", 
+                    data: {
+                        area_filtering_form_target: "cityId"
+                    }
                 }
-            }
-        )
+            )
         %>
     </div>
 
