@@ -6,10 +6,11 @@ class BranchesController < ApplicationController
   end
 
   def show
-    if params[:name].nil?
-      @branch = Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
-    else
-      @branch = Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find_by(name: params[:name])
-    end
+    @branch = if params[:name].nil?
+                Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
+              else
+                Branch.preload(:company, { city: :prefecture },
+                               reviews: { city: :prefecture }).find_by(name: params[:name])
+              end
   end
 end
