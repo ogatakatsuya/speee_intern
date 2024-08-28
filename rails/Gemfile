@@ -87,3 +87,5 @@ gem 'will_paginate', '~> 3.3'
 
 # バリデーションエラーメッセージを日本語化するため
 gem 'rails-i18n'
+# サイトマップを生成するため
+gem 'sitemap_generator'
