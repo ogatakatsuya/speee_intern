@@ -12,5 +12,9 @@ class BranchesController < ApplicationController
                 Branch.preload(:company, { city: :prefecture },
                                reviews: { city: :prefecture }).find_by(name: params[:name])
               end
+    evaluate_value = @branch.evaluate_value
+    @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
+    @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
+    @normalized_sales_speed = evaluate_value[:normalized_sales_speed]
   end
 end

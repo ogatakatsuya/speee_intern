@@ -20,7 +20,7 @@
 
   <div class="row mt-3 mb-3 mr-4">
     <div class="col-md-4">
-      <%= render partial: "radar_chart", locals: { reviews: @branch.reviews } %>
+      <%= render partial: "radar_chart", locals: { average_responsiveness_satisfaction: @average_responsiveness_satisfaction, normalized_sales_satisfaction: @normalized_sales_satisfaction, normalized_sales_speed: @normalized_sales_speed } %>
     </div>
     <div class="col-md-7 ms-auto">
       <div class="branch-info mt-5">
