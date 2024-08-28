@@ -42,7 +42,7 @@ class AssessmentRequestsController < ApplicationController
   end
 
   def done; end
-  
+
   def branches
     @city = City.find_by(id: params[:id])
     return unless @city
