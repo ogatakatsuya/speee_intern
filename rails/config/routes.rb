@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: %i[show]
   resources :assessment_requests, only: %i[new create] do
-    member do
-      get :cities
-    end
     get :done, on: :collection
   end
   resources :area_filtering, only: %i[create]
