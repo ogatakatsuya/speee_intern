@@ -18,21 +18,18 @@ class AreaFilteringController < ApplicationController
     @cities = City.all
     @area_filtering_form = AreaFilteringForm.new
     @branches = Branch.preload({ city: :prefecture }, :company, reviews: { city: :prefecture })
-  
+
     if params[:city_id].present? && params[:city_id].to_i.zero?
-      # When city_id is 0, show all branches in the selected prefecture
       @branches = @branches.joins(:city).where(cities: { prefecture_id: params[:prefecture_id] })
       @branches_per_page = @branches.paginate(page: params[:page], per_page: 10)
       @branch_address = Prefecture.find_by(id: params[:prefecture_id]).name
     else
-      # When city_id is present and not 0, filter branches by the selected city
       @branches = @branches.where(city_id: params[:city_id]) if params[:city_id].present?
       @branches_per_page = @branches.paginate(page: params[:page], per_page: 10)
       @city = City.find_by(id: params[:city_id])
       @branch_address = @city.city_address if @city.present?
     end
   end
-  
 
   def cities
     @cities = City.where(prefecture_id: params[:id])
