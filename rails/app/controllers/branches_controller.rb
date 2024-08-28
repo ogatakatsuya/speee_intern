@@ -2,12 +2,8 @@
 
 class BranchesController < ApplicationController
   def index
-    @branches = Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).paginate(
-      page: params[:page], per_page: 10
-    )
-    @area_filtering_form = AreaFilteringForm.new
-    @prefectures = Prefecture.all
-    @cities = City.all
+    load_dependencies
+    @branches = @branches.paginate(page: params[:page], per_page: 10)
   end
 
   def show
