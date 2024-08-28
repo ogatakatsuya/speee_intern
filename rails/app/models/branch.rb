@@ -22,7 +22,7 @@ class Branch < ApplicationRecord
     city.prefecture.name + city.name + street_address
   end
 
-  def city_adress
+  def city_address
     city.prefecture.name + city.name
   end
 

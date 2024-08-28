@@ -8,4 +8,8 @@ class City < ApplicationRecord
 
   validates :name, presence: true
   validates :yomikata, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  def city_address
+    prefecture.name + name
+  end
 end
