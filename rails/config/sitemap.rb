@@ -51,7 +51,7 @@ SitemapGenerator::Sitemap.create do
 
     # 店舗詳細画面の最終更新日時
     last_updated_at = branch.updated_at
-    if last_updated_review && last_updated_at < (last_updated_review.updated_at)
+    if last_updated_review && last_updated_at < last_updated_review.updated_at
       last_updated_at = last_updated_review.updated_at
     end
 
