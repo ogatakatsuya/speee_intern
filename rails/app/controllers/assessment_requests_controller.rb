@@ -45,13 +45,6 @@ class AssessmentRequestsController < ApplicationController
     end
   end
 
-  def cities
-    @cities = City.where(prefecture_id: params[:id])
-    respond_to do |format|
-      format.json { render json: @cities }
-    end
-  end
-
   def done; end
 
   def branches

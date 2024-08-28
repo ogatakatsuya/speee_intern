@@ -7,7 +7,8 @@ class AreaFilteringController < ApplicationController
     @area_filtering_form = AreaFilteringForm.new(area_filtering_params)
 
     if @area_filtering_form.valid?
-      redirect_to result_branches_path(prefecture_id: @area_filtering_form.prefecture_id, city_id: @area_filtering_form.city_id)
+      redirect_to result_branches_path(prefecture_id: @area_filtering_form.prefecture_id,
+                                       city_id: @area_filtering_form.city_id)
     else
       redirect_to controller: 'branches', action: 'index'
     end
