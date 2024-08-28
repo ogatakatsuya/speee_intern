@@ -39,7 +39,7 @@ class BranchesController < ApplicationController
     @prefectures = Prefecture.all
     @cities = City.all
     @area_filtering_form = AreaFilteringForm.new
-    @branches = Branch.preload({ city: :prefecture }, :company, reviews: { city: :prefecture })
+    @branches = Branch.preload(:company, city: :prefecture, reviews: { city: :prefecture })
   end
 
   def invalid_prefecture_id?
