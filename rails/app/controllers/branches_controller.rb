@@ -6,7 +6,12 @@ class BranchesController < ApplicationController
   end
 
   def show
-    @branch = Branch.preload(:company, city: :prefecture, reviews: { city: :prefecture }).find(params[:id])
+    @branch = if params[:name].nil?
+                Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
+              else
+                Branch.preload(:company, { city: :prefecture },
+                               reviews: { city: :prefecture }).find_by(name: params[:name])
+              end
     evaluate_value = @branch.evaluate_value
     @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
     @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
