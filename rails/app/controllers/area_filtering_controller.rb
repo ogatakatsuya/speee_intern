@@ -7,27 +7,9 @@ class AreaFilteringController < ApplicationController
     @area_filtering_form = AreaFilteringForm.new(area_filtering_params)
 
     if @area_filtering_form.valid?
-      redirect_to result_path(prefecture_id: @area_filtering_form.prefecture_id, city_id: @area_filtering_form.city_id)
+      redirect_to result_branches_path(prefecture_id: @area_filtering_form.prefecture_id, city_id: @area_filtering_form.city_id)
     else
       redirect_to controller: 'branches', action: 'index'
-    end
-  end
-
-  def result
-    @prefectures = Prefecture.all
-    @cities = City.all
-    @area_filtering_form = AreaFilteringForm.new
-    @branches = Branch.preload({ city: :prefecture }, :company, reviews: { city: :prefecture })
-
-    if params[:city_id].present? && params[:city_id].to_i.zero?
-      @branches = @branches.joins(:city).where(cities: { prefecture_id: params[:prefecture_id] })
-      @branches_per_page = @branches.paginate(page: params[:page], per_page: 10)
-      @branch_address = Prefecture.find_by(id: params[:prefecture_id]).name
-    else
-      @branches = @branches.where(city_id: params[:city_id]) if params[:city_id].present?
-      @branches_per_page = @branches.paginate(page: params[:page], per_page: 10)
-      @city = City.find_by(id: params[:city_id])
-      @branch_address = @city.city_address if @city.present?
     end
   end
 
