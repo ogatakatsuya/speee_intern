@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BranchesController < ApplicationController
+  before_action :set_breadcrumbs
+
   def index
     load_dependencies
     @branches = @branches.paginate(page: params[:page], per_page: 10)
@@ -24,6 +26,9 @@ class BranchesController < ApplicationController
     @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
     @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
     @normalized_sales_speed = evaluate_value[:normalized_sales_speed]
+
+    add_breadcrumb('店舗一覧', branches_path)
+    add_breadcrumb(@branch.name)
   end
 
   def result
@@ -78,5 +83,13 @@ class BranchesController < ApplicationController
 
   def numeric?(string)
     string.match?(/\A-?\d+(\.\d+)?\z/)
+  end
+
+  def add_breadcrumb(label, path = nil)
+    @breadcrumbs << { label:, path: }
+  end
+
+  def set_breadcrumbs
+    @breadcrumbs = []
   end
 end
