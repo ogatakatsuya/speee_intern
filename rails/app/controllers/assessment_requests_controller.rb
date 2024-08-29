@@ -10,8 +10,6 @@ class AssessmentRequestsController < ApplicationController
   IEUL_API_BASE_URL = 'https://miniul-api.herokuapp.com/affiliate/v2'
   URL_PARAM = 'beteran-sumai'
 
-  # 前のページからイエウールの店舗IDをクエリパラメータで受け取る
-  # new_assessment_request_path(branch_id: 1)
   def new
     @assessment_request_form = AssessmentRequestForm.new
     @assessment_request_form.branch_id = params[:branch_id]
