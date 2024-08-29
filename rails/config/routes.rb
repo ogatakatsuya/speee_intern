@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root 'branches#index'
+
   resources :branches, only: %i[index show] do
     collection do
       get :result

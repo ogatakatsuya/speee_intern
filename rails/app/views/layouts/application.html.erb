@@ -21,6 +21,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container my-4">
+      <%= breadcrumbs separator: " &rsaquo; " %> 
       <%= yield %>
     </div>
   </body>

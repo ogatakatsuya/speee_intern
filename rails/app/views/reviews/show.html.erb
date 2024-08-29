@@ -1,4 +1,5 @@
 <% provide(:title, "#{@review.branch.name}の口コミ") %>
+<% breadcrumb :review_show, @review %>
 <h3 class="text-center mt-4"><%= @review.headline %></h3>
 <div class="container">
 <h5 class="fw-bold">基本情報</h5>
