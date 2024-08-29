@@ -58,7 +58,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
         id: row['id'],
         company_id: row['company_id'],
         city_id: row['city_id'],
-        name: (row['企業名'] + (row['店舗名'] || '')),
+        name: row['店舗名'],
         post_code: row['郵便番号'],
         phone_number: row['電話番号'],
         fax_number: row['FAX番号'],

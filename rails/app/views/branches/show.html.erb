@@ -1,7 +1,7 @@
-<% provide(:title, @branch.name) %>
+<% provide(:title, @branch.full_name) %>
 <div class="container my-4">
   <h1 class="mb-4">
-    <%= @branch.name %>
+    <%= @branch.full_name %>
   </h1>
 
   <div class="row">
@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-7 ms-auto">
       <div class="branch-info mt-5">
-        <h2 class="h5 fw-bold mb-4"><%= @branch.name %>について</h2>
+        <h2 class="h5 fw-bold mb-4"><%= @branch.full_name %>について</h2>
           <div class="d-grid gap-2 ms-auto">
             <div><strong>企業名 :</strong> <%= @branch.company.name %></div>
             <div><strong>郵便番号 :</strong> <%= @branch.post_code %></div>

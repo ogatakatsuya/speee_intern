@@ -328,7 +328,7 @@ export default class AssessmentRequestFormController extends Controller {
             data.forEach(branch => {
               const option = document.createElement("option");
               option.value = branch.id;
-              option.textContent = branch.name;
+              option.textContent = branch.full_name;
               propertyBranchIdTarget.appendChild(option);
             });
           }

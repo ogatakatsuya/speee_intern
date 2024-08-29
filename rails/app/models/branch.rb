@@ -7,7 +7,6 @@ class Branch < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :assessable_cities, through: :assessable_areas, source: :city
 
-  validates :name, presence: true
   validates :post_code, presence: true
   validates :phone_number, presence: true
   validates :fax_number, presence: true
@@ -17,6 +16,10 @@ class Branch < ApplicationRecord
   validates :introduction, presence: true
   validates :street_address, presence: true
   validates :ieul_branch_id, presence: true, numericality: { only_integer: true }
+
+  def full_name
+    company.name + (name || '本店')
+  end
 
   def full_address
     city.prefecture.name + city.name + street_address
@@ -70,5 +73,9 @@ class Branch < ApplicationRecord
       normalized_sales_satisfaction:,
       normalized_sales_speed:
     }
+  end
+
+  def as_json(options = {})
+    super(options.merge(methods: :full_name))
   end
 end

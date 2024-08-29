@@ -19,6 +19,6 @@ Rails.application.routes.draw do
 
   get '/api/:id/cities', to: 'shared_api#cities'
   get '/api/assessment_requests/:id/branches', to: 'assessment_requests#branches'
-  # branch_by_name_path(id: 1, name: 'tokyo')という名前付きルーティングが使えるようになる
-  get 'branches/:id/:name', to: 'branches#show', as: :branch_by_name
+  # branch_by_name_path(id: 1, company_name: 'speee不動産', branch_name: '目黒店')という名前付きルーティングが使えるようになる branch_nameはオプショナル
+  get 'branches/:id/:company_name(/:branch_name)', to: 'branches#show', as: :branch_by_name
 end
