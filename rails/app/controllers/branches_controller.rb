@@ -9,19 +9,21 @@ class BranchesController < ApplicationController
   end
 
   def show
-    @branch = if params[:name].nil?
-                Branch.preload(:company, { city: :prefecture }, reviews: { city: :prefecture }).find(params[:id])
-              else
-                params[:company_name]
-                branch_name = params[:branch_name]
-                if branch_name.present?
-                  Branch.preload(:company, { city: :prefecture },
-                                 reviews: { city: :prefecture }).find_by(name: branch_name)
-                else
-                  Company.find_by(name: params[company_name_name]).branches.first!
-                end
+    company_name = params[:company_name]
+    branch_name = params[:branch_name]
 
+    query = Branch.preload(:company, city: :prefecture, reviews: { city: :prefecture })
+
+    @branch = if company_name.nil?
+                query.find_by(id: params[:id])
+              elsif branch_name.present?
+                query.find_by(name: branch_name)
+              else
+                query.joins(:company).find_by(companies: { name: company_name })
               end
+
+    return render file: Rails.public_path.join('404.html'), status: :not_found, layout: false if @branch.blank?
+
     evaluate_value = @branch.evaluate_value
     @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
     @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
