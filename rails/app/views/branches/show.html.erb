@@ -40,10 +40,16 @@
 
 
   <div class="reviews mb-4">
-    <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 <%= @branch.reviews.average(:company_satisfaction_id).round(1) %>）</h2>
-    <hr>
-    <% @branch.reviews.each do |review| %>
-      <%= render partial: "review", locals: { review: review } %>
+    <% if @branch.reviews.any? %>
+      <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 <%= @average_responsiveness_satisfaction %>）</h2>
+      <hr>
+      <% @branch.reviews.each do |review| %>
+        <%= render partial: "review", locals: { review: review } %>
+      <% end %>
+    <% else %>
+      <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 -）</h2>
+      <hr>
+      <p>表示する口コミはありません。</p>
     <% end %>
   </div>
 

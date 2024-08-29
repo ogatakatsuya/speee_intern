@@ -20,10 +20,16 @@ class BranchesController < ApplicationController
                 end
 
               end
-    evaluate_value = @branch.evaluate_value
-    @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
-    @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
-    @normalized_sales_speed = evaluate_value[:normalized_sales_speed]
+    if @branch.reviews.exists?
+      evaluate_value = @branch.evaluate_value
+      @average_responsiveness_satisfaction = evaluate_value[:average_responsiveness_satisfaction]
+      @normalized_sales_satisfaction = evaluate_value[:normalized_sales_satisfaction]
+      @normalized_sales_speed = evaluate_value[:normalized_sales_speed]
+    else
+      @average_responsiveness_satisfaction = 0
+      @normalized_sales_satisfaction = 0
+      @normalized_sales_speed = 0
+    end
   end
 
   def result

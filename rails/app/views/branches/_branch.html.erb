@@ -7,6 +7,8 @@
                 </h5>
                 <% if branch.reviews.present? %>
                     <p class="card-text" style="font-size: 24px;">★<%= branch.reviews.average(:company_satisfaction_id).round(1) %></p>
+                <% else %>
+                    <p class="card-text" style="font-size: 24px;">★-</p>
                 <% end %>
                 <img src="<%= branch.company.logo_url %>" class="img-fluid" alt="<%= branch.company.name %>のロゴ画像" />
             </div>
