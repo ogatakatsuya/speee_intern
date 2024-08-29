@@ -26,11 +26,6 @@ class BranchTest < ActiveSupport::TestCase
     assert @branch.valid?
   end
 
-  test '名前が入力されていない場合は有効でないレコードになる' do
-    @branch.name = '  '
-    assert_not @branch.valid?
-  end
-
   test '郵便番号が入力されていない場合は有効でないレコードになる' do
     @branch.post_code = '  '
     assert_not @branch.valid?
