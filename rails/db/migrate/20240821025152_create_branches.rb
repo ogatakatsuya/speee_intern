@@ -3,7 +3,7 @@
 class CreateBranches < ActiveRecord::Migration[7.1]
   def change
     create_table :branches do |t|
-      t.string :name, null: false
+      t.string :name
       t.string :post_code, null: false
       t.string :phone_number, null: false
       t.string :fax_number, null: false

@@ -52,6 +52,7 @@ class AssessmentRequestsController < ApplicationController
     return unless @city
 
     @branches = @city.branches
+
     respond_to do |format|
       format.json { render json: @branches }
     end
