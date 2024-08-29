@@ -14,12 +14,12 @@ class BranchesController < ApplicationController
 
     query = Branch.preload(:company, city: :prefecture, reviews: { city: :prefecture })
 
-    @branch = if company_name.nil?
-                query.find_by(id: params[:id])
-              elsif branch_name.present?
+    @branch = if branch_name.present?
                 query.find_by(name: branch_name)
-              else
+              elsif company_name.present?
                 query.joins(:company).find_by(companies: { name: company_name })
+              else
+                query.find_by(id: params[:id])
               end
 
     return render file: Rails.public_path.join('404.html'), status: :not_found, layout: false if @branch.blank?
