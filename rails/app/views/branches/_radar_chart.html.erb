@@ -5,7 +5,7 @@ window.addEventListener('turbo:load', () => {
     const review_radar_chart = document.getElementById('review-radar-chart');
 
     if (review_radar_chart != null) {
-        var ctx = review_radar_chart.getContext('2d');
+        const ctx = review_radar_chart.getContext('2d');
         const average_correspond_satisfaction = parseFloat("<%= average_responsiveness_satisfaction %>");
         const normalized_sales_value = parseFloat("<%= normalized_sales_satisfaction %>");
         const normalized_sale_data_value = parseFloat("<%= normalized_sales_speed %>");
@@ -15,7 +15,7 @@ window.addEventListener('turbo:load', () => {
             Chart.getChart(ctx).destroy();
         }
 
-        var myChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: ['対応満足度', '売却価格', '売却スピード'],
@@ -62,5 +62,5 @@ window.addEventListener('turbo:load', () => {
             }
         });
     }
-});
+}, { once: true });
 </script>
