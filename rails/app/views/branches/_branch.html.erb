@@ -5,9 +5,9 @@
                 <h5 class="card-title mt-4">
                     <%= link_to branch.full_name, branch_by_name_path(id: branch.id, company_name: branch.company.name, branch_name: branch.name), data: {"turbolinks" => false} %>
                 </h5>
-                <% if branch.reviews.present? %>
-                    <p class="card-text" style="font-size: 24px;">★<%= branch.reviews.average(:company_satisfaction_id).round(1) %></p>
-                <% end %>
+                <p class="card-text" style="font-size: 24px;">★
+                    <%= branch.reviews.present?  ? branch.reviews.average(:company_satisfaction_id).round(1) : "-" %>
+                </p>
                 <img src="<%= branch.company.logo_url %>" class="img-fluid" alt="<%= branch.company.name %>のロゴ画像" />
             </div>
             <div class="card-body col-md-9">

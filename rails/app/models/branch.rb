@@ -30,6 +30,13 @@ class Branch < ApplicationRecord
   end
 
   def evaluate_value
+    if reviews.blank?
+      return {
+        average_responsiveness_satisfaction: 0,
+        normalized_sales_satisfaction: 0,
+        normalized_sales_speed: 0
+      }
+    end
     # evaluate_valueの範囲
     evaluate_min_value = 1
     evaluate_max_value = 5

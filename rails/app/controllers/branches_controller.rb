@@ -28,7 +28,7 @@ class BranchesController < ApplicationController
     @normalized_sales_speed = evaluate_value[:normalized_sales_speed]
 
     add_breadcrumb('店舗一覧', branches_path)
-    add_breadcrumb(@branch.name)
+    add_breadcrumb(@branch.full_name)
   end
 
   def result

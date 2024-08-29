@@ -7,8 +7,8 @@ class ReviewsController < ApplicationController
     @review = Review.preload(branch: { city: :prefecture }).find(params[:id])
 
     add_breadcrumb('店舗一覧', branches_path)
-    add_breadcrumb(@review.branch.name, branch_path(@review.branch))
-    add_breadcrumb("#{@review.branch.name}の口コミ")
+    add_breadcrumb(@review.branch.full_name, branch_path(@review.branch))
+    add_breadcrumb("#{@review.branch.full_name}の口コミ")
   end
 
   private
