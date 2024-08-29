@@ -15,7 +15,7 @@ window.addEventListener('turbo:load', () => {
             Chart.getChart(ctx).destroy();
         }
 
-        myChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: ['対応満足度', '売却価格', '売却スピード'],
