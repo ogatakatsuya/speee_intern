@@ -21,7 +21,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container my-4">
-      <%= breadcrumbs separator: " &rsaquo; " %> 
+      <%= render partial: "layouts/breadcrumbs" %>
       <%= yield %>
     </div>
   </body>
