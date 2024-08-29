@@ -79,7 +79,7 @@ class BranchesController < ApplicationController
   end
 
   def add_breadcrumb(label, path = nil)
-    @breadcrumbs << { label: label, path: path }
+    @breadcrumbs << { label:, path: }
   end
 
   def set_breadcrumbs
