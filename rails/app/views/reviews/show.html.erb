@@ -1,7 +1,7 @@
 <% provide(:title, "#{@review.branch.full_name}の口コミ") %>
 <h3 class="text-center mt-4"><%= @review.headline %></h3>
 <div class="container">
-<h5 class="fw-bold">基本情報</h5>
+<h4 class="fw-bold">基本情報</h4>
     <div>売却した不動産会社名 : <%= @review.branch.full_name %></div>
     <div>住所 :  <%= @review.branch.city_address %></div>
     <div>売却の理由 : <%= SaleReason.find(@review.sale_reason_id).reason %></div>
@@ -13,17 +13,17 @@
 </div>
 
 <div class="container mt-5">
-    <h5 class="fw-bold">売却時に不安だったこと</h5>
+    <h4 class="fw-bold">売却時に不安だったこと</h4>
     <%= @review.concerns_at_sale %>
 </div>
 
 <div class="container mt-5">
-    <h5 class="fw-bold">この会社に決めた決め手</h5>
+    <h4 class="fw-bold">この会社に決めた決め手</h4>
     <%= @review.chosen_company_reason %>
 </div>
 
 <div class="container mt-5">
-    <h5 class="fw-bold">不動産会社の満足度</h5>
+    <h4 class="fw-bold">不動産会社の満足度</h4>
     <div>
         <strong>不動産会社の満足度 : </strong>
         <span style="font-size: 20px;">★<%= @review.company_satisfaction_id %></span>
@@ -34,19 +34,19 @@
 </div>
 
 <div class="container mt-5">
-    <h5 class="fw-bold">今後売却する人へのアドバイス</h5>
+    <h4 class="fw-bold">今後売却する人へのアドバイス</h4>
     <%= @review.advice_for_future_sellers %>
 </div>
 
 <% if @review.areas_for_improvement.present? %>
     <div class="container mt-5">
-        <h5 class="fw-bold">不動産会社に改善してほしい点</h5> 
+        <h4 class="fw-bold">不動産会社に改善してほしい点</h4> 
         <%= @review.areas_for_improvement %>
     </div>
 <% end %>
 
 <div class="container mt-5">
-    <h5 class="fw-bold">売却時期と価格について</h5>
+    <h4 class="fw-bold">売却時期と価格について</h4>
     <div class="border border-gray p-2">
         <table class="table mt-3">
             <tbody>
@@ -82,7 +82,7 @@
 
 <% if @review.discounted %>
     <div class="container mt-5">
-        <h5 class="fw-bold">割引時期と割引価格について</h5>
+        <h4 class="fw-bold">割引時期と割引価格について</h4>
         <div>
             <strong>割引までの月数 : </strong><%= @review.months_to_discount %>ヶ月
         </div>
@@ -93,7 +93,7 @@
 <% end %>
 
 <div class="container mt-5 mb-5">
-    <h5 class="fw-bold"><%= @review.branch.full_name %>について</h5>
+    <h4 class="fw-bold"><%= @review.branch.full_name %>について</h4>
     <div>
         <div>郵便番号: <%= @review.branch.post_code %></div>
         <div>電話番号: <%= @review.branch.phone_number %></div>
