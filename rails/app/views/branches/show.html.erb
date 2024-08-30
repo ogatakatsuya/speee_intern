@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-md-2">
-      <img src="<%= @branch.company.logo_url %>" class="img-fluid" alt="<%= @branch.company.name %>のロゴ画像" />
+      <img src="<%= @branch.company.logo_url %>" class="img-fluid" alt="<%= @branch.company.name %>のロゴ画像">
     </div>
     <div class="col-md-10">
         <div class="mb-4">
@@ -20,7 +20,10 @@
 
   <div class="row mt-3 mb-3 mr-4">
     <div class="col-md-4">
-      <%= render partial: "radar_chart", locals: { average_responsiveness_satisfaction: @average_responsiveness_satisfaction, normalized_sales_satisfaction: @normalized_sales_satisfaction, normalized_sales_speed: @normalized_sales_speed } %>
+      <%= render partial: 'radar_chart',
+                 locals: { average_responsiveness_satisfaction: @average_responsiveness_satisfaction,
+                           normalized_sales_satisfaction: @normalized_sales_satisfaction,
+                           normalized_sales_speed: @normalized_sales_speed } %>
     </div>
     <div class="col-md-7 ms-auto">
       <div class="branch-info mt-5">
@@ -38,13 +41,13 @@
     </div>
   </div>
 
-
   <div class="reviews mb-4">
-    <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ（平均評価 <%= @branch.reviews.present? ? @average_responsiveness_satisfaction : "-" %>）</h2>
+    <h2 class="h5 fw-bold"><%= @branch.company.name %>で売却したひとの不動産会社についての口コミ
+    （平均評価 <%= @branch.reviews.present? ? @average_responsiveness_satisfaction : '-' %>）</h2>
     <hr>
     <% if @branch.reviews.any? %>
       <% @branch.reviews.each do |review| %>
-        <%= render partial: "review", locals: { review: review } %>
+        <%= render partial: 'review', locals: { review: } %>
       <% end %>
     <% else %>
       <p>表示する口コミはありません。</p>
@@ -52,6 +55,7 @@
   </div>
 
 <div class="text-center mb-4">
-    <%= link_to '査定依頼をする', new_assessment_request_path(from: 'branch_show', branch_id: @branch.id), class: 'btn btn-primary' %>
+    <%= link_to '査定依頼をする', new_assessment_request_path(from: 'branch_show', branch_id: @branch.id),
+                class: 'btn btn-primary' %>
 </div>
 </div>

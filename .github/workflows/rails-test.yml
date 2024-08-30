@@ -37,6 +37,9 @@ jobs:
     - name: rubocop
       run: bundle exec rubocop
 
+    - name: erblint
+      run: bundle exec erblint --lint-all -a
+
     - run: bundle exec rails db:create db:migrate
     - name: minitest
       run: bundle exec rails test

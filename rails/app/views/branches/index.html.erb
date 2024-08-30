@@ -1,6 +1,8 @@
-<% provide(:title, "店舗一覧") %>
+<% provide(:title, '店舗一覧') %>
 <div class="m-4">
-  <%= render partial: "area_filtering_form", locals:{area_filtering_form: @area_filtering_form, prefectures: @prefectures, cities: @cities}%>
+  <%= render partial: 'area_filtering_form',
+             locals: { area_filtering_form: @area_filtering_form, prefectures: @prefectures,
+                       cities: @cities } %>
   <h3 class="my-4">店舗一覧</h3>
   <div class="row">
     <% @branches.each do |branch| %>
@@ -8,4 +10,4 @@
     <% end %>
   </div>
 </div>
-<%= will_paginate previous_label: '前へ', next_label: '次へ', inner_window: 2%>
+<%= will_paginate previous_label: '前へ', next_label: '次へ', inner_window: 2 %>

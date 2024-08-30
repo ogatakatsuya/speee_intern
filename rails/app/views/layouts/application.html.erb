@@ -8,7 +8,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -22,7 +22,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container my-4">
-      <%= render partial: "layouts/breadcrumbs" %>
+      <%= render partial: 'layouts/breadcrumbs' %>
       <%= yield %>
     </div>
   </body>
