@@ -148,6 +148,7 @@
         :name,
         {
           prompt: "都道府県を選択してください",
+          selected: @assessment_request_form.property_prefecture_id,
           required: true
         },
         {
@@ -171,6 +172,7 @@
         :name,
         {
           prompt: "市区町村を選択してください",
+          selected: @assessment_request_form.property_city_id,
           required: true
         },
         {
@@ -191,9 +193,10 @@
         :branch_id,
         @branches,
         :id,
-        :name,
+        :full_name,
         {
           prompt: "店舗を選択してください",
+          selected: @assessment_request_form.branch_id,
           required: true
         },
         {

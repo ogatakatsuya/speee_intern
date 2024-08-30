@@ -12,11 +12,23 @@ class AssessmentRequestsController < ApplicationController
 
   def new
     @assessment_request_form = AssessmentRequestForm.new
-    @assessment_request_form.branch_id = params[:branch_id]
 
     @prefectures = Prefecture.all
     @cities = []
     @branches = []
+
+    branch_id = params[:branch_id]
+
+    return if branch_id.blank?
+
+    branch = Branch.preload(city: :prefecture).find_by(id: branch_id)
+    @assessment_request_form = AssessmentRequestForm.new(
+      property_prefecture_id: branch.city.prefecture.id,
+      property_city_id: branch.city.id,
+      branch_id:
+    )
+    @cities = [branch.city]
+    @branches = [branch]
   end
 
   def create
