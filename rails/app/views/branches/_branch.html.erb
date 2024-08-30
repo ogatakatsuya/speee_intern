@@ -2,9 +2,9 @@
     <div class="card" style="border: 1px solid #ddd;">
         <div class="row">
             <div class="col-md-3 text-center">
-                <h5 class="card-title mt-4">
+                <h4 class="card-title mt-4">
                     <%= link_to branch.full_name, branch_by_name_path(id: branch.id, company_name: branch.company.name, branch_name: branch.name), data: {"turbolinks" => false} %>
-                </h5>
+                </h4>
                 <p class="card-text" style="font-size: 24px;">★
                     <%= branch.reviews.present?  ? branch.reviews.average(:company_satisfaction_id).round(1) : "-" %>
                 </p>
