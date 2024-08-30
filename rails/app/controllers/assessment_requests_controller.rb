@@ -16,20 +16,19 @@ class AssessmentRequestsController < ApplicationController
     @prefectures = Prefecture.all
     @cities = []
     @branches = []
-    return if params[:branch_id].blank?
 
     branch_id = params[:branch_id]
-    branch = Branch.find_by(id: branch_id)
-    city_id = branch.city.id
-    city = branch.city
-    prefecture_id = city.prefecture.id
+
+    return if branch_id.blank?
+
+    branch = Branch.preload(city: :prefecture).find_by(id: branch_id)
     @assessment_request_form = AssessmentRequestForm.new(
-      property_prefecture_id: prefecture_id, # Select the first prefecture by default
-      property_city_id: city_id, # Select the first city by default
-      branch_id: # Select the first branch by default
+      property_prefecture_id: branch.city.prefecture.id,
+      property_city_id: branch.city.id,
+      branch_id:
     )
-    @cities << city
-    @branches << branch
+    @cities = [branch.city]
+    @branches = [branch]
   end
 
   def create
