@@ -21,6 +21,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
   end
 
   # rake csv_import:city で実行
+  desc 'CSVから市区町村データをインポートする'
   task city: :environment do
     path = Rails.root.join 'db/csv/city.csv'.to_s
     puts "読み込みpath: #{path}"
@@ -36,6 +37,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
   end
 
   # rake csv_import:company で実行
+  desc 'CSVから会社データをインポートする'
   task company: :environment do
     path = Rails.root.join 'db/csv/company.csv'.to_s
     puts "読み込みpath: #{path}"
@@ -50,6 +52,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
     puts '完了！'
   end
 
+  desc 'CSVから店舗データをインポートする'
   task branch: :environment do
     path = Rails.root.join 'db/csv/branch.csv'.to_s
     puts "読み込みpath: #{path}"
@@ -79,6 +82,7 @@ namespace :csv_import do # rubocop:disable Metrics/BlockLength
   end
 
   # rake csv_import:review で実行
+  desc 'CSVから口コミデータをインポートする'
   task review: :environment do
     path = Rails.root.join 'db/csv/review.csv'.to_s
     puts "読み込みpath: #{path}"

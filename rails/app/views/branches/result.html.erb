@@ -1,14 +1,15 @@
 <% provide(:title, "#{@branch_address}の不動産会社") %>
 <h3>検索結果</h3>
 
-<%= render partial: "branches/area_filtering_form", locals:{area_filtering_form: @area_filtering_form, prefectures: @prefectures, cities: @cities}%>
+<%= render partial: 'branches/area_filtering_form',
+           locals: { area_filtering_form: @area_filtering_form, prefectures: @prefectures, cities: @cities } %>
 
 <h3 class="my-4"><%= @branch_address %>の査定を出せる店舗一覧</h3>
 
 <% if @branches_per_page.any? %>
     <div class="row">
         <% @branches_per_page.each do |branch| %>
-        <%= render partial: "branches/branch", locals: { branch: branch } %>
+        <%= render partial: 'branches/branch', locals: { branch: } %>
         <% end %>
     </div>
     <%= will_paginate @branches_per_page, previous_label: '前へ', next_label: '次へ' %>

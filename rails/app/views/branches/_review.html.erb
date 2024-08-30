@@ -2,6 +2,7 @@
   <div class="fw-bold"><%= link_to review.headline, review_path(id: review.id) %> : ★<%= review.company_satisfaction_id %></div>
   <div class="mb-2"><%= review.company_satisfaction_reason %></div>
   <div>
-    成約価格 : <%= review.contract_price/10000 %>万円（<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_period.strftime("%Y年%m月") %>に売却）
+    成約価格 : <%= review.contract_price / 10_000 %>万円
+    （<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_period.strftime('%Y年%m月') %>に売却）
   </div>
 </div>
