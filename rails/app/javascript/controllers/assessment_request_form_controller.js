@@ -173,6 +173,8 @@ export default class AssessmentRequestFormController extends Controller {
       errorMessageTarget.textContent = "数値を入力してください"
     } else if (propertyExclusiveArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
+    } else if (propertyExclusiveArea > 10000) {
+      errorMessageTarget.textContent = "10000以下の数値を入力してください"
     } else {
       propertyExclusiveAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
@@ -192,7 +194,9 @@ export default class AssessmentRequestFormController extends Controller {
       errorMessageTarget.textContent = "数値を入力してください"
     } else if (propertyLandArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
-    } else {
+    } else if (propertyLandArea > 10000) {
+      errorMessageTarget.textContent = "10000以下の数値を入力してください"
+    }  else {
       propertyLandAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }
@@ -211,6 +215,8 @@ export default class AssessmentRequestFormController extends Controller {
       errorMessageTarget.textContent = "数値を入力してください"
     } else if (propertyBuildingArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
+    } else if (propertyBuildingArea > 10000) {
+      errorMessageTarget.textContent = "10000以下の数値を入力してください"
     } else {
       propertyBuildingAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
@@ -228,9 +234,11 @@ export default class AssessmentRequestFormController extends Controller {
       errorMessageTarget.textContent = "延床面積を入力してください"
     } else if (isNaN(propertyFloorArea)) {
       errorMessageTarget.textContent = "数値を入力してください"
-    } else if (propertyFloorArea < 0) {
+    } else if (propertyFloorArea <= 0) {
       errorMessageTarget.textContent = "正の数を入力してください"
-    } else {
+    } else if (propertyFloorArea > 10000) {
+      errorMessageTarget.textContent = "10000以下の数値を入力してください"
+    }  else {
       propertyFloorAreaTarget.className = "form-control"
       errorMessageTarget.textContent = ""
     }

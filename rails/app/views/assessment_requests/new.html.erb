@@ -33,7 +33,7 @@
           :user_last_name,
           placeholder: "田中",
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "userLastName",
             action: "input->assessment-request-form#validateUserLastName"
@@ -47,7 +47,7 @@
           :user_first_name,
           placeholder: "太郎",
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "userFirstName",
             action: "input->assessment-request-form#validateUserFirstName"
@@ -70,7 +70,7 @@
           {
             placeholder: "タナカ",
             required: true,
-            class: "form-control", 
+            class: "form-control custom-placeholder", 
             data: {
               assessment_request_form_target: "userLastNameKana",
               action: "input->assessment-request-form#validateUserLastNameKana"
@@ -85,7 +85,7 @@
           :user_first_name_kana,
           {
             placeholder: "タロウ",
-            class: "form-control", 
+            class: "form-control custom-placeholder", 
             data: {
               assessment_request_form_target: "userFirstNameKana",
               action: "input->assessment-request-form#validateUserFirstNameKana"
@@ -108,7 +108,7 @@
         {
           placeholder: "09012345678",
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "userTel",
             action: "input->assessment-request-form#validateUserTel"
@@ -127,7 +127,7 @@
         {
           placeholder: "test@example.jp",
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "userEmail",
             action: "input->assessment-request-form#validateUserEmail"
@@ -214,7 +214,7 @@
         {
           placeholder: "港区六本木3-2-1",
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "propertyAddress",
             action: "input->assessment-request-form#validatePropertyAddress"
@@ -272,8 +272,9 @@
         :property_exclusive_area,
         {
           step: 0.01,
+          placeholder: 100,
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "propertyExclusiveArea",
             action: "input->assessment-request-form#validatePropertyExclusiveArea"
@@ -291,8 +292,9 @@
         :property_land_area,
         {
           step: 0.01,
+          placeholder: 100,
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "propertyLandArea",
             action: "input->assessment-request-form#validatePropertyLandArea"
@@ -311,8 +313,9 @@
           :property_building_area,
           {
             step: 0.01,
+            placeholder: 100,
             required: true,
-            class: "form-control", 
+            class: "form-control custom-placeholder", 
             data: {
               assessment_request_form_target: "propertyBuildingArea",
               action: "input->assessment-request-form#validatePropertyBuildingArea"
@@ -331,8 +334,9 @@
         :property_floor_area,
         {
           step: 0.01,
+          placeholder: 100,
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "propertyFloorArea",
             action: "input->assessment-request-form#validatePropertyFloorArea"
@@ -385,7 +389,7 @@
           placeholder: "2016",
           in: 1925..2016,
           required: true,
-          class: "form-control", 
+          class: "form-control custom-placeholder", 
           data: {
             assessment_request_form_target: "propertyConstructedYear",
             action: "input->assessment-request-form#validatePropertyConstructedYear"

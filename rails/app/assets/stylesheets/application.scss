@@ -63,3 +63,7 @@
   padding: 8px 12px;
   border-radius: 20px;
 }
+
+.custom-placeholder::placeholder{
+  color: rgba(0, 0, 0, 0.3);
+}
