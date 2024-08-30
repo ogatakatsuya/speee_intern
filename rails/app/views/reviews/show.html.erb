@@ -104,5 +104,5 @@
     </div>
 </div>
 <div class="text-center mb-4">
-    <%= link_to '査定依頼をする', new_assessment_request_path, class: 'btn btn-primary' %>
+    <%= link_to '査定依頼をする', new_assessment_request_path(branch_id: @review.branch.id), class: 'btn btn-primary' %>
 </div>
