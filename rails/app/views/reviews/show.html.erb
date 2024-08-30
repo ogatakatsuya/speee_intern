@@ -58,17 +58,17 @@
                 <tr>
                     <td>査定依頼時期/価格</td>
                     <td><%= @review.appraisal_request_period %></td>
-                    <td><%= @review.appraisal_price %></td>
+                    <td><%= (@review.appraisal_price/10000).floor %>万円</td>
                 </tr>
                 <tr>
                     <td>売出時期/価格</td>
                     <td><%= @review.listing_period %></td>
-                    <td><%= @review.sale_price %></td>
+                    <td><%= (@review.sale_price/10000).floor %>万円</td>
                 </tr>
                 <tr>
                     <td>売却時期/価格</td>
                     <td><%= @review.sale_period %></td>
-                    <td><%= @review.contract_price %></td>
+                    <td><%= (@review.contract_price/10000).floor %>万円</td>
                 </tr>
                 <tr>
                     <td>引き渡し時期</td>
@@ -80,15 +80,17 @@
     </div>
 </div>
 
-<div class="container mt-5">
-    <h5 class="fw-bold">割引時期と割引価格について</h5>
-    <div>
-        <strong>割引までの月数 : </strong><%= @review.months_to_discount %>
+<% if @review.discounted %>
+    <div class="container mt-5">
+        <h5 class="fw-bold">割引時期と割引価格について</h5>
+        <div>
+            <strong>割引までの月数 : </strong><%= @review.months_to_discount %>ヶ月
+        </div>
+        <div>
+            <strong>割引価格 : </strong><%= (@review.contract_price/10000).floor %>万円
+        </div>
     </div>
-    <div>
-        <strong>割引価格 : </strong><%= @review.contract_price %>
-    </div>
-</div>
+<% end %>
 
 <div class="container mt-5 mb-5">
     <h5 class="fw-bold"><%= @review.branch.full_name %>について</h5>
