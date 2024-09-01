@@ -1,4 +1,4 @@
-## （チーム名）
+## DRY
 
 DBにCSVを登録する方法
 以下のコマンドを順に実行
@@ -20,7 +20,3 @@ rake csv_import:review
 ```
 rake sitemap:refresh
 ```
-https://internship-c.sandbox.srv.speee.jp/
-# speee_intern
-# speee_intern
-# speee_intern
